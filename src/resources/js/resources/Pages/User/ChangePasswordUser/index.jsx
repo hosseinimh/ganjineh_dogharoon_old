@@ -1,0 +1,36 @@
+import React from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+import { InputTextColumn, FormPage } from "../../../components";
+import * as funcs from "./funcs";
+import { changePasswordUserPage as strings } from "../../../../constants/strings";
+import { changePasswordUserSchema as schema } from "../../../validations";
+
+const ChangePasswordUser = () => {
+    const form = useForm({
+        resolver: yupResolver(schema),
+    });
+
+    return (
+        <FormPage
+            page={"ChangePasswordUser"}
+            strings={strings}
+            funcs={funcs}
+            useForm={form}
+        >
+            <InputTextColumn
+                field="newPassword"
+                type="password"
+                inputStyle={{ direction: "ltr" }}
+            />
+            <InputTextColumn
+                field="confirmPassword"
+                type="password"
+                inputStyle={{ direction: "ltr" }}
+            />
+        </FormPage>
+    );
+};
+
+export default ChangePasswordUser;
