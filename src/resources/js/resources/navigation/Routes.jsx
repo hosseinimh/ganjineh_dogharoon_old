@@ -34,6 +34,14 @@ function AuthRoute() {
                                 element={<Pages.EditBank />}
                             />
                             <Route
+                                path={`${BASE_PATH}/relationships/add`}
+                                element={<Pages.AddRelationship />}
+                            />
+                            <Route
+                                path={`${BASE_PATH}/relationships/edit/:relationshipId`}
+                                element={<Pages.EditRelationship />}
+                            />
+                            <Route
                                 path={`${BASE_PATH}/users/change_password/:userId`}
                                 element={<Pages.ChangePasswordUser />}
                             />
@@ -57,6 +65,10 @@ function AuthRoute() {
                     <Route
                         path={`${BASE_PATH}/banks`}
                         element={<Pages.Banks />}
+                    />
+                    <Route
+                        path={`${BASE_PATH}/relationships`}
+                        element={<Pages.Relationships />}
                     />
                     <Route
                         path={`${BASE_PATH}/users`}

@@ -940,6 +940,11 @@ function Sidebar() {
                             "pe-7s-id"
                         )}
                         {renderTab(
+                            `${BASE_PATH}/relationships`,
+                            strings.relationships,
+                            "pe-7s-id"
+                        )}
+                        {renderTab(
                             `${BASE_PATH}/users/edit`,
                             strings.editProfile,
                             "pe-7s-id"

@@ -10,6 +10,9 @@ import EditVillage from "./Village/EditVillage";
 import Banks from "./Bank/Banks";
 import AddBank from "./Bank/AddBank";
 import EditBank from "./Bank/EditBank";
+import Relationships from "./Relationship/Relationships";
+import AddRelationship from "./Relationship/AddRelationship";
+import EditRelationship from "./Relationship/EditRelationship";
 
 export {
     Dashboard,
@@ -24,4 +27,7 @@ export {
     Banks,
     AddBank,
     EditBank,
+    Relationships,
+    AddRelationship,
+    EditRelationship,
 };

@@ -1,5 +1,4 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
@@ -14,7 +13,6 @@ import { editUserPage as strings } from "../../../../constants/strings";
 import { editUserSchema as schema } from "../../../validations";
 
 const EditUser = () => {
-    const ls = useSelector((state) => state.layoutReducer);
     const form = useForm({
         resolver: yupResolver(schema),
     });

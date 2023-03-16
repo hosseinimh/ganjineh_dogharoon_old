@@ -7,6 +7,8 @@ import addVillageSchema from "./Village/AddVillageSchema";
 import editVillageSchema from "./Village/EditVillageSchema";
 import addBankSchema from "./Bank/AddBankSchema";
 import editBankSchema from "./Bank/EditBankSchema";
+import addRelationshipSchema from "./Relationship/AddRelationshipSchema";
+import editRelationshipSchema from "./Relationship/EditRelationshipSchema";
 
 export {
     loginUserSchema,
@@ -18,4 +20,6 @@ export {
     editVillageSchema,
     addBankSchema,
     editBankSchema,
+    addRelationshipSchema,
+    editRelationshipSchema,
 };

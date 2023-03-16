@@ -5,18 +5,22 @@ namespace App\Providers;
 use App\Constants\Theme;
 use App\Http\Controllers\Administrator\BankController;
 use App\Http\Controllers\Administrator\DashboardController;
+use App\Http\Controllers\Administrator\RelationshipController;
 use App\Http\Controllers\Administrator\UserController;
 use App\Http\Controllers\Administrator\VillageController;
 use App\Http\Controllers\User\BankController as UserBankController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
+use App\Http\Controllers\User\RelationshipController as UserRelationshipController;
 use App\Http\Controllers\User\UserController as UserUserController;
 use App\Http\Controllers\User\VillageController as UserVillageController;
 use App\Http\Resources\Bank\BankResource;
+use App\Http\Resources\Relationship\RelationshipResource;
 use App\Http\Resources\User\UserResource;
 use App\Http\Resources\Village\VillageResource;
 use App\Packages\Helper;
 use App\Packages\JsonResponse;
 use App\Services\BankService;
+use App\Services\RelationshipService;
 use App\Services\UserService;
 use App\Services\VillageService;
 use Illuminate\Support\Facades\View;
@@ -71,6 +75,14 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(UserBankController::class, function ($app) {
             return new UserBankController(new JsonResponse(BankResource::class), $app->make(BankService::class));
+        });
+
+        $this->app->bind(RelationshipController::class, function ($app) {
+            return new RelationshipController(new JsonResponse(RelationshipResource::class), $app->make(RelationshipService::class));
+        });
+
+        $this->app->bind(UserRelationshipController::class, function ($app) {
+            return new UserRelationshipController(new JsonResponse(RelationshipResource::class), $app->make(RelationshipService::class));
         });
     }
 }

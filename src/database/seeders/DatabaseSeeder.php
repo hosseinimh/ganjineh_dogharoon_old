@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             VillageSeeder::class,
             BankSeeder::class,
+            RelationshipSeeder::class
         ]);
     }
 }

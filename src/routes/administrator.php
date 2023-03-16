@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Administrator\BankController;
 use App\Http\Controllers\Administrator\DashboardController;
+use App\Http\Controllers\Administrator\RelationshipController;
 use App\Http\Controllers\Administrator\UserController;
 use App\Http\Controllers\Administrator\VillageController;
 use Illuminate\Support\Facades\Route;
@@ -26,4 +27,7 @@ Route::middleware(['auth:sanctum', 'auth.administrator'])->group(function () {
 
     Route::post('banks/store', [BankController::class, 'store']);
     Route::post('banks/update/{model}', [BankController::class, 'update']);
+
+    Route::post('relationships/store', [RelationshipController::class, 'store']);
+    Route::post('relationships/update/{model}', [RelationshipController::class, 'update']);
 });

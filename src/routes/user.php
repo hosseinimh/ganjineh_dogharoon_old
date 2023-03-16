@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Administrator\DashboardController;
 use App\Http\Controllers\User\BankController;
+use App\Http\Controllers\User\RelationshipController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\VillageController;
 use Illuminate\Support\Facades\Route;
@@ -27,4 +28,7 @@ Route::middleware(['auth:sanctum', 'auth.logged'])->group(function () {
 
     Route::post('banks', [BankController::class, 'index']);
     Route::post('banks/show/{model}', [BankController::class, 'show']);
+
+    Route::post('relationships', [RelationshipController::class, 'index']);
+    Route::post('relationships/show/{model}', [RelationshipController::class, 'show']);
 });

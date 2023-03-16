@@ -74,6 +74,7 @@ export const sidebar = {
     users: "کاربران",
     villages: "روستاها",
     banks: "بانک‌ها",
+    relationships: "روابط خویشاوندی",
     editProfile: "ویرایش پروفایل",
     changePassword: "تغییر کلمه عبور",
     logout: "خروج کاربری",
@@ -181,7 +182,7 @@ export const editVillagePage = {
 
 export const banksPage = {
     _title: "بانک‌ها",
-    name: "نام",
+    name: "بانک",
     add: "افزودن بانک",
 };
 
@@ -197,4 +198,24 @@ export const editBankPage = {
     name: "بانک",
     namePlaceholder: "بانک",
     submitted: "ویرایش بانک با موفقیت انجام گردید.",
+};
+
+export const relationshipsPage = {
+    _title: "روابط خویشاوندی",
+    name: "رابطه خویشاوندی",
+    add: "افزودن رابطه خویشاوندی",
+};
+
+export const addRelationshipPage = {
+    _title: "افزودن رابطه خویشاوندی",
+    name: "رابطه خویشاوندی",
+    namePlaceholder: "رابطه خویشاوندی",
+    submitted: "افزودن رابطه خویشاوندی با موفقیت انجام گردید.",
+};
+
+export const editRelationshipPage = {
+    _title: "ویرایش رابطه خویشاوندی",
+    name: "رابطه خویشاوندی",
+    namePlaceholder: "رابطه خویشاوندی",
+    submitted: "ویرایش رابطه خویشاوندی با موفقیت انجام گردید.",
 };
