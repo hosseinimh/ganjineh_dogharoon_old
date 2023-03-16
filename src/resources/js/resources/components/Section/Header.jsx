@@ -52,7 +52,6 @@ const Header = () => {
                         <button
                             type="button"
                             className="hamburger close-sidebar-btn hamburger--elastic"
-                            dataclass="closed-sidebar"
                         >
                             <span className="hamburger-box">
                                 <span className="hamburger-inner"></span>
@@ -125,7 +124,7 @@ const Header = () => {
                                                     <div
                                                         className="menu-header-image opacity-2"
                                                         style={{
-                                                            backgroundImage: `url("${ASSETS_PATH}/images/city3.jpg")`,
+                                                            backgroundImage: `url("${ASSETS_PATH}/images/city.jpg")`,
                                                         }}
                                                     ></div>
                                                     <div className="menu-header-content text-right">
@@ -165,7 +164,6 @@ const Header = () => {
                                                 </div>
                                             </div>
                                             <ul className="nav flex-column p-0">
-                                                <li className="nav-item-divider nav-item"></li>
                                                 <li className="nav-item-btn text-center nav-item">
                                                     <button
                                                         className="btn-wide btn btn-primary btn-sm"

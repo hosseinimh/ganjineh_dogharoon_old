@@ -27,7 +27,6 @@
         <div className="loading"></div>
         <p>{{ __('general.loading') }}</p>
     </div>
-    <script src="{{$THEME::JS_PATH}}/main.js"></script>
     @php
     try {
     $filename = 'assets/js/index.js';
@@ -40,6 +39,19 @@
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function(event) {
             document.getElementById('loading').style.display = 'none';
+        });
+    </script>
+    <script>
+        window.addEventListener("resize", () => {
+            const container = document.querySelector(".app-container");
+
+            if (document.body.clientWidth < 1250) {
+                container.classList.add("closed-sidebar-mobile");
+                container.classList.add("closed-sidebar");
+            } else {
+                container.classList.remove("closed-sidebar-mobile");
+                container.classList.remove("closed-sidebar");
+            }
         });
     </script>
 </body>

@@ -9259,7 +9259,6 @@ var Header = function Header() {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
             type: "button",
             className: "hamburger close-sidebar-btn hamburger--elastic",
-            dataclass: "closed-sidebar",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
               className: "hamburger-box",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
@@ -9345,7 +9344,7 @@ var Header = function Header() {
                         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
                           className: "menu-header-image opacity-2",
                           style: {
-                            backgroundImage: "url(\"".concat(_constants__WEBPACK_IMPORTED_MODULE_2__.ASSETS_PATH, "/images/city3.jpg\")")
+                            backgroundImage: "url(\"".concat(_constants__WEBPACK_IMPORTED_MODULE_2__.ASSETS_PATH, "/images/city.jpg\")")
                           }
                         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
                           className: "menu-header-content text-right",
@@ -9382,18 +9381,16 @@ var Header = function Header() {
                           })
                         })]
                       })
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("ul", {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ul", {
                       className: "nav flex-column p-0",
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
-                        className: "nav-item-divider nav-item"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
                         className: "nav-item-btn text-center nav-item",
                         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
                           className: "btn-wide btn btn-primary btn-sm",
                           onMouseUp: onEditUser,
                           children: _constants_strings__WEBPACK_IMPORTED_MODULE_3__.header.editUser
                         })
-                      })]
+                      })
                     })]
                   })]
                 })
@@ -9554,7 +9551,141 @@ function Sidebar() {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var container = document.querySelector(".scrollbar-sidebar");
     new perfect_scrollbar__WEBPACK_IMPORTED_MODULE_2__["default"](container);
+    onLoadPage();
   }, []);
+  var findSidebarBtn = function findSidebarBtn(e, isMobile) {
+    e.preventDefault();
+    var element;
+    if (isMobile) {
+      if (e.target.classList.contains("mobile-toggle-nav")) {
+        element = e.target;
+      } else if (e.target.classList.contains("hamburger-box")) {
+        element = e.target.parentNode;
+      } else if (e.target.classList.contains("hamburger-inner")) {
+        element = e.target.parentNode.parentNode;
+      }
+    } else {
+      if (e.target.classList.contains("close-sidebar-btn")) {
+        element = e.target;
+      } else if (e.target.classList.contains("hamburger-box")) {
+        element = e.target.parentNode;
+      } else if (e.target.classList.contains("hamburger-inner")) {
+        element = e.target.parentNode.parentNode;
+      }
+    }
+    return element;
+  };
+  var findDropDownLink = function findDropDownLink(e, isMobile) {
+    e.preventDefault();
+    var element;
+    if (isMobile) {
+      if (e.target.classList.contains("btn-sm mobile-toggle-header-nav")) {
+        element = e.target;
+      } else if (e.target.classList.contains("btn-icon-wrapper")) {
+        element = e.target.parentNode;
+      } else if (e.target.classList.contains("fa-ellipsis-v")) {
+        element = e.target.parentNode.parentNode;
+      }
+    } else {
+      if (e.target.getAttribute("data-toggle")) {
+        element = e.target;
+      } else if (e.target.classList.contains("rounded-circle")) {
+        element = e.target.parentNode;
+      } else if (e.target.classList.contains("fa-angle-down")) {
+        element = e.target.parentNode;
+      }
+    }
+    return element;
+  };
+  var toggleSidebar = function toggleSidebar(element) {
+    if (!element) {
+      return;
+    }
+    var container = document.querySelector(".app-container");
+    if (element.classList.contains("is-active")) {
+      element.classList.remove("is-active");
+      if (document.body.clientWidth < 1250) {
+        container.classList.remove("sidebar-mobile-open");
+      } else {
+        container.classList.remove("closed-sidebar");
+      }
+    } else {
+      element.classList.add("is-active");
+      if (document.body.clientWidth < 1250) {
+        container.classList.add("sidebar-mobile-open");
+      } else {
+        container.classList.add("closed-sidebar");
+      }
+    }
+  };
+  var toggleDropDown = function toggleDropDown(element) {
+    if (!element) {
+      return;
+    }
+    if (document.body.clientWidth < 992) {
+      var appHeader = document.querySelector(".app-header__content");
+      var popup = document.querySelector(".dropdown-menu-left");
+      var btnGroup = popup.parentNode;
+      if (appHeader.classList.contains("header-mobile-open")) {
+        appHeader.classList.remove("header-mobile-open");
+        btnGroup.classList.remove("show");
+        element.classList.remove("active");
+        popup.classList.remove("show");
+        popup.removeAttribute("x-placement");
+        popup.style = "";
+      } else {
+        appHeader.classList.add("header-mobile-open");
+        btnGroup.classList.add("show");
+        element.classList.add("active");
+        popup.classList.add("show");
+        popup.setAttribute("x-placement", "bottom-start");
+        popup.style = "position: absolute; transform: translate3d(-16px, 44px, 0px); top: 0px; left: 0px; will-change: transform;";
+      }
+    } else {
+      var _btnGroup = element.parentNode;
+      var _popup = element.nextElementSibling;
+      if (_btnGroup.classList.contains("show")) {
+        _btnGroup.classList.remove("show");
+        element.setAttribute("aria-expanded", "false");
+        _popup.classList.remove("show");
+        _popup.removeAttribute("x-placement");
+        _popup.style = "";
+      } else {
+        _btnGroup.classList.add("show");
+        element.setAttribute("aria-expanded", "true");
+        _popup.classList.add("show");
+        _popup.setAttribute("x-placement", "bottom-start");
+        _popup.style = "position: absolute; transform: translate3d(0px, 44px, 0px); top: 0px; left: 0px; will-change: transform;";
+      }
+    }
+  };
+  var onLoadPage = function onLoadPage() {
+    var _document$querySelect, _document$querySelect2, _document$querySelect3, _document$querySelect4;
+    (_document$querySelect = document.querySelector(".close-sidebar-btn")) === null || _document$querySelect === void 0 ? void 0 : _document$querySelect.addEventListener("click", function (e) {
+      var isMobile = document.body.clientWidth < 1250;
+      toggleSidebar(findSidebarBtn(e, isMobile));
+    });
+    (_document$querySelect2 = document.querySelector(".mobile-toggle-nav")) === null || _document$querySelect2 === void 0 ? void 0 : _document$querySelect2.addEventListener("click", function (e) {
+      var isMobile = document.body.clientWidth < 1250;
+      toggleSidebar(findSidebarBtn(e, isMobile));
+    });
+    (_document$querySelect3 = document.querySelector("[data-toggle]")) === null || _document$querySelect3 === void 0 ? void 0 : _document$querySelect3.addEventListener("click", function (e) {
+      var isMobile = document.body.clientWidth < 992;
+      toggleDropDown(findDropDownLink(e, isMobile));
+    });
+    (_document$querySelect4 = document.querySelector(".mobile-toggle-header-nav")) === null || _document$querySelect4 === void 0 ? void 0 : _document$querySelect4.addEventListener("click", function (e) {
+      var isMobile = document.body.clientWidth < 992;
+      toggleDropDown(findDropDownLink(e, isMobile));
+    });
+    var container = document.querySelector(".app-container");
+    if (document.body.clientWidth < 1250) {
+      container.classList.add("closed-sidebar-mobile");
+      container.classList.add("closed-sidebar");
+    } else {
+      container.classList.remove("closed-sidebar-mobile");
+      container.classList.remove("closed-sidebar");
+    }
+  };
   var toggleLink = function toggleLink(e) {
     e.preventDefault();
     var element = e.target.parentNode;
@@ -9695,7 +9826,6 @@ function Sidebar() {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
             type: "button",
             className: "hamburger close-sidebar-btn hamburger--elastic",
-            dataclass: "closed-sidebar",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
               className: "hamburger-box",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
@@ -9733,7 +9863,7 @@ function Sidebar() {
           })
         })
       })
-    }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
       className: "scrollbar-sidebar ps ps--active-y",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
         className: "app-sidebar__inner",
@@ -10390,7 +10520,7 @@ function Sidebar() {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
         className: "app-sidebar-bg opacity-06",
         style: {
-          backgroundImage: 'url("/assets/images/city3.jpg")'
+          backgroundImage: 'url("/assets/images/city.jpg")'
         }
       })]
     })]

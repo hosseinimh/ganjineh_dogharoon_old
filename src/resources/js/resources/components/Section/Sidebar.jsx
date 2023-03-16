@@ -34,7 +34,168 @@ function Sidebar() {
     useEffect(() => {
         const container = document.querySelector(".scrollbar-sidebar");
         new PerfectScrollbar(container);
+        onLoadPage();
     }, []);
+
+    const findSidebarBtn = (e, isMobile) => {
+        e.preventDefault();
+
+        let element;
+
+        if (isMobile) {
+            if (e.target.classList.contains("mobile-toggle-nav")) {
+                element = e.target;
+            } else if (e.target.classList.contains("hamburger-box")) {
+                element = e.target.parentNode;
+            } else if (e.target.classList.contains("hamburger-inner")) {
+                element = e.target.parentNode.parentNode;
+            }
+        } else {
+            if (e.target.classList.contains("close-sidebar-btn")) {
+                element = e.target;
+            } else if (e.target.classList.contains("hamburger-box")) {
+                element = e.target.parentNode;
+            } else if (e.target.classList.contains("hamburger-inner")) {
+                element = e.target.parentNode.parentNode;
+            }
+        }
+
+        return element;
+    };
+
+    const findDropDownLink = (e, isMobile) => {
+        e.preventDefault();
+
+        let element;
+
+        if (isMobile) {
+            if (
+                e.target.classList.contains("btn-sm mobile-toggle-header-nav")
+            ) {
+                element = e.target;
+            } else if (e.target.classList.contains("btn-icon-wrapper")) {
+                element = e.target.parentNode;
+            } else if (e.target.classList.contains("fa-ellipsis-v")) {
+                element = e.target.parentNode.parentNode;
+            }
+        } else {
+            if (e.target.getAttribute("data-toggle")) {
+                element = e.target;
+            } else if (e.target.classList.contains("rounded-circle")) {
+                element = e.target.parentNode;
+            } else if (e.target.classList.contains("fa-angle-down")) {
+                element = e.target.parentNode;
+            }
+        }
+
+        return element;
+    };
+
+    const toggleSidebar = (element) => {
+        if (!element) {
+            return;
+        }
+
+        const container = document.querySelector(".app-container");
+
+        if (element.classList.contains("is-active")) {
+            element.classList.remove("is-active");
+            if (document.body.clientWidth < 1250) {
+                container.classList.remove("sidebar-mobile-open");
+            } else {
+                container.classList.remove("closed-sidebar");
+            }
+        } else {
+            element.classList.add("is-active");
+            if (document.body.clientWidth < 1250) {
+                container.classList.add("sidebar-mobile-open");
+            } else {
+                container.classList.add("closed-sidebar");
+            }
+        }
+    };
+
+    const toggleDropDown = (element) => {
+        if (!element) {
+            return;
+        }
+
+        if (document.body.clientWidth < 992) {
+            const appHeader = document.querySelector(".app-header__content");
+            const popup = document.querySelector(".dropdown-menu-left");
+            const btnGroup = popup.parentNode;
+            if (appHeader.classList.contains("header-mobile-open")) {
+                appHeader.classList.remove("header-mobile-open");
+                btnGroup.classList.remove("show");
+                element.classList.remove("active");
+                popup.classList.remove("show");
+                popup.removeAttribute("x-placement");
+                popup.style = "";
+            } else {
+                appHeader.classList.add("header-mobile-open");
+                btnGroup.classList.add("show");
+                element.classList.add("active");
+                popup.classList.add("show");
+                popup.setAttribute("x-placement", "bottom-start");
+                popup.style =
+                    "position: absolute; transform: translate3d(-16px, 44px, 0px); top: 0px; left: 0px; will-change: transform;";
+            }
+        } else {
+            const btnGroup = element.parentNode;
+            const popup = element.nextElementSibling;
+            if (btnGroup.classList.contains("show")) {
+                btnGroup.classList.remove("show");
+                element.setAttribute("aria-expanded", "false");
+                popup.classList.remove("show");
+                popup.removeAttribute("x-placement");
+                popup.style = "";
+            } else {
+                btnGroup.classList.add("show");
+                element.setAttribute("aria-expanded", "true");
+                popup.classList.add("show");
+                popup.setAttribute("x-placement", "bottom-start");
+                popup.style =
+                    "position: absolute; transform: translate3d(0px, 44px, 0px); top: 0px; left: 0px; will-change: transform;";
+            }
+        }
+    };
+
+    const onLoadPage = () => {
+        document
+            .querySelector(".close-sidebar-btn")
+            ?.addEventListener("click", (e) => {
+                const isMobile = document.body.clientWidth < 1250;
+                toggleSidebar(findSidebarBtn(e, isMobile));
+            });
+        document
+            .querySelector(".mobile-toggle-nav")
+            ?.addEventListener("click", (e) => {
+                const isMobile = document.body.clientWidth < 1250;
+                toggleSidebar(findSidebarBtn(e, isMobile));
+            });
+        document
+            .querySelector("[data-toggle]")
+            ?.addEventListener("click", (e) => {
+                const isMobile = document.body.clientWidth < 992;
+                toggleDropDown(findDropDownLink(e, isMobile));
+            });
+        document
+            .querySelector(".mobile-toggle-header-nav")
+            ?.addEventListener("click", (e) => {
+                const isMobile = document.body.clientWidth < 992;
+                toggleDropDown(findDropDownLink(e, isMobile));
+            });
+
+        const container = document.querySelector(".app-container");
+
+        if (document.body.clientWidth < 1250) {
+            container.classList.add("closed-sidebar-mobile");
+            container.classList.add("closed-sidebar");
+        } else {
+            container.classList.remove("closed-sidebar-mobile");
+            container.classList.remove("closed-sidebar");
+        }
+    };
 
     const toggleLink = (e) => {
         e.preventDefault();
@@ -210,7 +371,6 @@ function Sidebar() {
                         <button
                             type="button"
                             className="hamburger close-sidebar-btn hamburger--elastic"
-                            dataclass="closed-sidebar"
                         >
                             <span className="hamburger-box">
                                 <span className="hamburger-inner"></span>
@@ -242,7 +402,7 @@ function Sidebar() {
                         </span>
                     </button>
                 </span>
-            </div>{" "}
+            </div>
             <div className="scrollbar-sidebar ps ps--active-y">
                 <div className="app-sidebar__inner">
                     <ul className="vertical-nav-menu metismenu">
@@ -794,7 +954,7 @@ function Sidebar() {
                 <div
                     className="app-sidebar-bg opacity-06"
                     style={{
-                        backgroundImage: 'url("/assets/images/city3.jpg")',
+                        backgroundImage: 'url("/assets/images/city.jpg")',
                     }}
                 ></div>
             </div>
