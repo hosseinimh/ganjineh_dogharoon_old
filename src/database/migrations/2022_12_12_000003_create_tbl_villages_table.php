@@ -1,6 +1,5 @@
 <?php
 
-use App\Constants\Role;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,16 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_users', function (Blueprint $table) {
+        Schema::create('tbl_villages', function (Blueprint $table) {
             $table->id();
-            $table->string('username')->unique();
-            $table->string('password');
             $table->string('name');
-            $table->string('family');
-            $table->string('mobile');
-            $table->unsignedTinyInteger('role')->default(Role::USER);
-            $table->unsignedTinyInteger('is_active')->default(0);
-            $table->rememberToken();
+            $table->unsignedBigInteger('district_id');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -36,7 +29,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('tbl_users', function (Blueprint $table) {
+        Schema::table('tbl_villages', function (Blueprint $table) {
             $table->dropSoftDeletes();
         });
     }

@@ -6,7 +6,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { usersPage as strings, general } from "../../../../constants/strings";
 import * as funcs from "./funcs";
 import {
-    InputSelectColumn,
     InputTextColumn,
     ListPage,
     SearchBox,

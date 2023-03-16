@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 
 import { BASE_PATH, MESSAGE_TYPES } from "../../../../constants";
-import { usersPage as strings } from "../../../../constants/strings";
-import { User as Entity } from "../../../../http/entities";
+import { villagesPage as strings } from "../../../../constants/strings";
+import { Village as Entity } from "../../../../http/entities";
 import {
     setLoadingAction,
     setPagePropsAction,
@@ -65,10 +65,6 @@ export const onLayoutState = () => {
             editAction(_ls?.pageProps?.item);
 
             return;
-        case "CHANGE_PASSWORD":
-            changePasswordAction(_ls?.pageProps?.item);
-
-            return;
     }
 };
 
@@ -85,36 +81,17 @@ export const onEdit = (item) => {
     );
 };
 
-export const onChangePassword = (item) => {
-    _dispatch(
-        setPagePropsAction({
-            action: "CHANGE_PASSWORD",
-            item,
-        })
-    );
-};
-
-export const setPage = (page) => {
-    _dispatch(setPagePropsAction({ pageNumber: page }));
-};
-
 export const onSubmit = (data) => {
     fillForm(data);
 };
 
 const addAction = () => {
-    _navigate(`${BASE_PATH}/users/add`);
+    _navigate(`${BASE_PATH}/villages/add`);
 };
 
 const editAction = (item) => {
     if (!isNaN(item?.id) && item?.id > 0) {
-        _navigate(`${BASE_PATH}/users/edit/${item.id}`);
-    }
-};
-
-const changePasswordAction = (item) => {
-    if (!isNaN(item?.id) && item?.id > 0) {
-        _navigate(`${BASE_PATH}/users/change_password/${item.id}`);
+        _navigate(`${BASE_PATH}/villages/edit/${item.id}`);
     }
 };
 
@@ -127,11 +104,7 @@ const fillForm = async (data = null) => {
 };
 
 const fetchPageData = async (data) => {
-    let result = await _entity.getPaginate(
-        data?.username ?? "",
-        data?.nameFamily ?? "",
-        _ls?.pageProps?.pageNumber ?? 1
-    );
+    let result = await _entity.getPaginate();
 
     if (result === null) {
         _dispatch(setPagePropsAction({ items: null }));

@@ -1,3 +1,4 @@
+import { USER_ROLES } from "../../../../constants";
 import { setLoadingAction } from "../../../../state/layout/layoutActions";
 import { clearMessageAction } from "../../../../state/message/messageActions";
 import { fetchLoginAction } from "../../../../state/user/userActions";
@@ -17,5 +18,7 @@ export const onLayoutState = () => {};
 export const onSubmit = async (data) => {
     _dispatch(setLoadingAction(true));
     _dispatch(clearMessageAction());
-    _dispatch(fetchLoginAction(data.username, data.password));
+    _dispatch(
+        fetchLoginAction(data.username, data.password, USER_ROLES.ADMINISTRATOR)
+    );
 };

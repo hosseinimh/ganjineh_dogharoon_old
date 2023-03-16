@@ -192,6 +192,15 @@ function Sidebar() {
 
     const renderUserLinks = () => <></>;
 
+    const renderTab = (url, string, icon = "") => (
+        <li>
+            <Link to={url} aria-expanded="false">
+                <i className={`metismenu-icon ${icon}`}></i>
+                {string}
+            </Link>
+        </li>
+    );
+
     return (
         <div className="app-sidebar sidebar-text-light sidebar-shadow bg-royal">
             <div className="app-header__logo">
@@ -760,33 +769,26 @@ function Sidebar() {
                             </ul>
                         </li>
                         <li className="app-sidebar__heading">امکانات</li>
-                        <li>
-                            <Link
-                                to={`${BASE_PATH}/users/edit`}
-                                aria-expanded="false"
-                            >
-                                <i className="metismenu-icon pe-7s-id"></i>
-                                {strings.editProfile}
-                            </Link>
-                        </li>
-                        <li>
-                            <Link
-                                to={`${BASE_PATH}/users/change_password`}
-                                aria-expanded="false"
-                            >
-                                <i className="metismenu-icon pe-7s-pen"></i>
-                                {strings.changePassword}
-                            </Link>
-                        </li>
-                        <li>
-                            <CustomLink
-                                aria-expanded="false"
-                                onClick={onLogout}
-                            >
-                                <i className="metismenu-icon pe-7s-door-lock"></i>
-                                {strings.logout}
-                            </CustomLink>
-                        </li>
+                        {renderTab(
+                            `${BASE_PATH}/villages`,
+                            strings.villages,
+                            "pe-7s-id"
+                        )}
+                        {renderTab(
+                            `${BASE_PATH}/users/edit`,
+                            strings.editProfile,
+                            "pe-7s-id"
+                        )}
+                        {renderTab(
+                            `${BASE_PATH}/users/change_password`,
+                            strings.changePassword,
+                            "pe-7s-pen"
+                        )}
+                        {renderTab(
+                            `${BASE_PATH}/users/logout`,
+                            strings.logout,
+                            "pe-7s-door-lock"
+                        )}
                     </ul>
                 </div>
                 <div

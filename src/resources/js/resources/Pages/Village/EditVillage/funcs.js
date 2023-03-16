@@ -1,7 +1,7 @@
-import { User as Entity } from "../../../../http/entities";
+import { Village as Entity } from "../../../../http/entities";
 
 import {
-    editUserPage as strings,
+    editVillagePage as strings,
     general,
 } from "../../../../constants/strings";
 import {
@@ -19,15 +19,13 @@ import {
     MESSAGE_TYPES,
     USER_ROLES,
 } from "../../../../constants";
-import utils from "../../../../utils/Utils";
 
 let _dispatch;
 let _navigate;
 let _useForm;
 let _pageProps;
 let _callbackUrl;
-let _userId;
-const _lsUser = utils.getLSUser();
+let _villageId;
 let _entity = new Entity();
 
 export const init = (dispatch, navigate, useForm) => {
@@ -35,7 +33,7 @@ export const init = (dispatch, navigate, useForm) => {
     _navigate = navigate;
     _useForm = useForm;
 
-    _callbackUrl = `${BASE_PATH}/users`;
+    _callbackUrl = `${BASE_PATH}/villages`;
 };
 
 export const onLoad = (params) => {
@@ -43,7 +41,7 @@ export const onLoad = (params) => {
         action: null,
     };
 
-    setUserId(params?.userId);
+    setVillageId(params?.villageId);
 
     _dispatch(setTitleAction(strings._title));
     _dispatch(setPagePropsAction(_pageProps));
@@ -57,17 +55,7 @@ export const onSubmit = async (data) => {
     _dispatch(setLoadingAction(true));
     _dispatch(clearMessageAction());
 
-    const role = data.administrator
-        ? USER_ROLES.ADMINISTRATOR
-        : USER_ROLES.USER;
-    let result = await _entity.update(
-        _userId,
-        data.name,
-        data.family,
-        data.mobile,
-        role,
-        data.isActive ? 1 : 0
-    );
+    let result = await _entity.update(_villageId, data.district, data.name);
 
     if (result === null) {
         _dispatch(setLoadingAction(false));
@@ -98,8 +86,8 @@ export const onCancel = () => {
     _navigate(_callbackUrl);
 };
 
-const setUserId = (userId) => {
-    _userId = !isNaN(userId) && userId > 0 ? userId : _lsUser.id;
+const setVillageId = (villageId) => {
+    _villageId = !isNaN(villageId) && villageId > 0 ? villageId : 0;
 };
 
 const fillForm = async () => {
@@ -111,7 +99,7 @@ const fillForm = async () => {
 };
 
 const fetchPageData = async () => {
-    if (_userId <= 0) {
+    if (_villageId <= 0) {
         _dispatch(
             setMessageAction(
                 general.itemNotFound,
@@ -126,10 +114,7 @@ const fetchPageData = async () => {
         return null;
     }
 
-    let result =
-        _lsUser.role === USER_ROLES.ADMINISTRATOR
-            ? await _entity.getUser(_userId)
-            : await _entity.getUserFromUser();
+    let result = await _entity.getVillage(_villageId);
 
     if (result === null) {
         _dispatch(
@@ -146,21 +131,9 @@ const fetchPageData = async () => {
         return null;
     }
 
+    _useForm.setValue("district", result.item.districtId);
     _useForm.setValue("name", result.item.name);
-    _useForm.setValue("family", result.item.family);
-    _useForm.setValue("mobile", result.item.mobile);
-    _useForm.setValue("isActive", result.item.isActive);
-    _useForm.setValue(
-        result.item.role === USER_ROLES.ADMINISTRATOR
-            ? "administrator"
-            : "user",
-        "on"
-    );
 
-    _dispatch(
-        setTitleAction(
-            `${strings._title} [ ${result.item.name} ${result.item.family} - ${result.item.username} ]`
-        )
-    );
+    _dispatch(setTitleAction(`${strings._title} [ ${result.item.name} ]`));
     _dispatch(setLoadingAction(false));
 };

@@ -72,6 +72,7 @@ export const footer = {
 export const sidebar = {
     dashboard: "داشبورد",
     users: "کاربران",
+    villages: "روستاها",
     editProfile: "ویرایش پروفایل",
     changePassword: "تغییر کلمه عبور",
     logout: "خروج کاربری",
@@ -147,4 +148,32 @@ export const changePasswordUserPage = {
     newPassword: "کلمه عبور جدید",
     confirmPassword: "تایید کلمه عبور جدید",
     submitted: "تغییر کلمه عبور با موفقیت انجام گردید.",
+};
+
+export const districts = {
+    district1: "مرکزی",
+    district2: "میان‌ولایت",
+};
+
+export const villagesPage = {
+    _title: "روستاها",
+    name: "نام",
+    district: "بخش",
+    add: "افزودن روستا",
+};
+
+export const addVillagePage = {
+    _title: "افزودن روستا",
+    district: "بخش",
+    name: "روستا",
+    namePlaceholder: "روستا",
+    submitted: "افزودن روستا با موفقیت انجام گردید.",
+};
+
+export const editVillagePage = {
+    _title: "ویرایش روستا",
+    district: "بخش",
+    name: "روستا",
+    namePlaceholder: "روستا",
+    submitted: "ویرایش روستا با موفقیت انجام گردید.",
 };

@@ -5,12 +5,16 @@ namespace App\Providers;
 use App\Constants\Theme;
 use App\Http\Controllers\Administrator\DashboardController;
 use App\Http\Controllers\Administrator\UserController;
+use App\Http\Controllers\Administrator\VillageController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
 use App\Http\Controllers\User\UserController as UserUserController;
+use App\Http\Controllers\User\VillageController as UserVillageController;
 use App\Http\Resources\User\UserResource;
+use App\Http\Resources\Village\VillageResource;
 use App\Packages\Helper;
 use App\Packages\JsonResponse;
 use App\Services\UserService;
+use App\Services\VillageService;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -47,6 +51,14 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(UserUserController::class, function ($app) {
             return new UserUserController(new JsonResponse(UserResource::class), $app->make(UserService::class));
+        });
+
+        $this->app->bind(VillageController::class, function ($app) {
+            return new VillageController(new JsonResponse(VillageResource::class), $app->make(VillageService::class));
+        });
+
+        $this->app->bind(UserVillageController::class, function ($app) {
+            return new UserVillageController(new JsonResponse(VillageResource::class), $app->make(VillageService::class));
         });
     }
 }

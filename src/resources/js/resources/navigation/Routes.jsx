@@ -18,26 +18,38 @@ function AuthRoute() {
                     {lsUser?.role === USER_ROLES.ADMINISTRATOR && (
                         <>
                             <Route
+                                path={`${BASE_PATH}/villages/add`}
+                                element={<Pages.AddVillage />}
+                            />
+                            <Route
+                                path={`${BASE_PATH}/villages/edit/:villageId`}
+                                element={<Pages.EditVillage />}
+                            />
+                            <Route
                                 path={`${BASE_PATH}/users/change_password/:userId`}
                                 element={<Pages.ChangePasswordUser />}
                             />
                             <Route
                                 path={`${BASE_PATH}/users/add`}
                                 element={<Pages.AddUser />}
-                            />{" "}
+                            />
                             <Route
                                 path={`${BASE_PATH}/users/edit/:userId`}
                                 element={<Pages.EditUser />}
-                            />
-                            <Route
-                                path={`${BASE_PATH}/users`}
-                                element={<Pages.Users />}
                             />
                         </>
                     )}
 
                     {lsUser?.role === USER_ROLES.USER && <></>}
 
+                    <Route
+                        path={`${BASE_PATH}/villages`}
+                        element={<Pages.Villages />}
+                    />
+                    <Route
+                        path={`${BASE_PATH}/users`}
+                        element={<Pages.Users />}
+                    />
                     <Route
                         path={`${BASE_PATH}`}
                         element={<Pages.Dashboard />}

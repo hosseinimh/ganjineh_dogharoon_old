@@ -4,19 +4,6 @@
   src: url(../fonts/Vazir.eot);
   src: url(../fonts/Vazir.woff) format("woff"), url(../fonts/Vazir.ttf) format("truetype");
 }
-.fancytree-helper-hidden {
-  display: none;
-}
-.fancytree-helper-indeterminate-cb {
-  color: #777;
-}
-.fancytree-helper-disabled {
-  color: silver;
-}
-.fancytree-helper-spin {
-  -webkit-animation: spin 1000ms infinite linear;
-  animation: spin 1000ms infinite linear;
-}
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);
