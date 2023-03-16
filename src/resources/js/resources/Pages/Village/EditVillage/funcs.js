@@ -13,12 +13,7 @@ import {
     clearMessageAction,
     setMessageAction,
 } from "../../../../state/message/messageActions";
-import {
-    BASE_PATH,
-    MESSAGE_CODES,
-    MESSAGE_TYPES,
-    USER_ROLES,
-} from "../../../../constants";
+import { BASE_PATH, MESSAGE_CODES, MESSAGE_TYPES } from "../../../../constants";
 
 let _dispatch;
 let _navigate;

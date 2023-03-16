@@ -21,7 +21,6 @@ const districtItems = [
 ];
 
 const EditVillage = () => {
-    const ls = useSelector((state) => state.layoutReducer);
     const form = useForm({
         resolver: yupResolver(schema),
     });

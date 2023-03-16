@@ -1,5 +1,4 @@
 import { BASE_URL } from "../../constants";
-import utils from "../../utils/Utils";
 import Entity from "./Entity";
 
 export class Village extends Entity {

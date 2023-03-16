@@ -26,6 +26,14 @@ function AuthRoute() {
                                 element={<Pages.EditVillage />}
                             />
                             <Route
+                                path={`${BASE_PATH}/banks/add`}
+                                element={<Pages.AddBank />}
+                            />
+                            <Route
+                                path={`${BASE_PATH}/banks/edit/:bankId`}
+                                element={<Pages.EditBank />}
+                            />
+                            <Route
                                 path={`${BASE_PATH}/users/change_password/:userId`}
                                 element={<Pages.ChangePasswordUser />}
                             />
@@ -45,6 +53,10 @@ function AuthRoute() {
                     <Route
                         path={`${BASE_PATH}/villages`}
                         element={<Pages.Villages />}
+                    />
+                    <Route
+                        path={`${BASE_PATH}/banks`}
+                        element={<Pages.Banks />}
                     />
                     <Route
                         path={`${BASE_PATH}/users`}

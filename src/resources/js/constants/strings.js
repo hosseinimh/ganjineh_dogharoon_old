@@ -73,6 +73,7 @@ export const sidebar = {
     dashboard: "داشبورد",
     users: "کاربران",
     villages: "روستاها",
+    banks: "بانک‌ها",
     editProfile: "ویرایش پروفایل",
     changePassword: "تغییر کلمه عبور",
     logout: "خروج کاربری",
@@ -176,4 +177,24 @@ export const editVillagePage = {
     name: "روستا",
     namePlaceholder: "روستا",
     submitted: "ویرایش روستا با موفقیت انجام گردید.",
+};
+
+export const banksPage = {
+    _title: "بانک‌ها",
+    name: "نام",
+    add: "افزودن بانک",
+};
+
+export const addBankPage = {
+    _title: "افزودن بانک",
+    name: "بانک",
+    namePlaceholder: "بانک",
+    submitted: "افزودن بانک با موفقیت انجام گردید.",
+};
+
+export const editBankPage = {
+    _title: "ویرایش بانک",
+    name: "بانک",
+    namePlaceholder: "بانک",
+    submitted: "ویرایش بانک با موفقیت انجام گردید.",
 };

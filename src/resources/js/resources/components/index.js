@@ -36,7 +36,6 @@ import InputSwitchCheckboxColumn from "./Input/InputSwitchCheckboxColumn";
 
 // Modal
 import Modal from "./Modal/Modal";
-import SelectCityModal from "./Modal/SelectCityModal";
 
 // Page
 import BlankPage from "./Page/BlankPage";
@@ -67,7 +66,6 @@ export {
     InputSwitchCheckboxColumn,
     InputCheckboxColumn,
     Modal,
-    SelectCityModal,
     BlankPage,
     ListPage,
     FormPage,

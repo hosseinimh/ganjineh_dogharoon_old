@@ -3,16 +3,20 @@
 namespace App\Providers;
 
 use App\Constants\Theme;
+use App\Http\Controllers\Administrator\BankController;
 use App\Http\Controllers\Administrator\DashboardController;
 use App\Http\Controllers\Administrator\UserController;
 use App\Http\Controllers\Administrator\VillageController;
+use App\Http\Controllers\User\BankController as UserBankController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
 use App\Http\Controllers\User\UserController as UserUserController;
 use App\Http\Controllers\User\VillageController as UserVillageController;
+use App\Http\Resources\Bank\BankResource;
 use App\Http\Resources\User\UserResource;
 use App\Http\Resources\Village\VillageResource;
 use App\Packages\Helper;
 use App\Packages\JsonResponse;
+use App\Services\BankService;
 use App\Services\UserService;
 use App\Services\VillageService;
 use Illuminate\Support\Facades\View;
@@ -59,6 +63,14 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(UserVillageController::class, function ($app) {
             return new UserVillageController(new JsonResponse(VillageResource::class), $app->make(VillageService::class));
+        });
+
+        $this->app->bind(BankController::class, function ($app) {
+            return new BankController(new JsonResponse(BankResource::class), $app->make(BankService::class));
+        });
+
+        $this->app->bind(UserBankController::class, function ($app) {
+            return new UserBankController(new JsonResponse(BankResource::class), $app->make(BankService::class));
         });
     }
 }

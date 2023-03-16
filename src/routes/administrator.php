@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Administrator\BankController;
 use App\Http\Controllers\Administrator\DashboardController;
 use App\Http\Controllers\Administrator\UserController;
 use App\Http\Controllers\Administrator\VillageController;
@@ -22,4 +23,7 @@ Route::middleware(['auth:sanctum', 'auth.administrator'])->group(function () {
 
     Route::post('villages/store', [VillageController::class, 'store']);
     Route::post('villages/update/{model}', [VillageController::class, 'update']);
+
+    Route::post('banks/store', [BankController::class, 'store']);
+    Route::post('banks/update/{model}', [BankController::class, 'update']);
 });

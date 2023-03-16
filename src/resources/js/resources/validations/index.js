@@ -5,6 +5,8 @@ import editUserSchema from "./User/EditUserSchema";
 import changePasswordUserSchema from "./User/ChangePasswordUserSchema";
 import addVillageSchema from "./Village/AddVillageSchema";
 import editVillageSchema from "./Village/EditVillageSchema";
+import addBankSchema from "./Bank/AddBankSchema";
+import editBankSchema from "./Bank/EditBankSchema";
 
 export {
     loginUserSchema,
@@ -14,4 +16,6 @@ export {
     changePasswordUserSchema,
     addVillageSchema,
     editVillageSchema,
+    addBankSchema,
+    editBankSchema,
 };
