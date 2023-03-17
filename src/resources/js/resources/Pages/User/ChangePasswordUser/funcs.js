@@ -5,7 +5,8 @@ import {
 } from "../../../../constants/strings";
 import {
     setLoadingAction,
-    setTitleAction,
+    setPageIconAction,
+    setPageTitleAction,
 } from "../../../../state/layout/layoutActions";
 import {
     clearMessageAction,
@@ -32,13 +33,15 @@ export const init = (dispatch, navigate) => {
 };
 
 export const onLoad = (params) => {
-    _dispatch(setTitleAction(strings._title));
     setUserId(params?.userId);
 
     _callbackUrl =
         _lsUser?.role === USER_ROLES.ADMINISTRATOR
             ? `${BASE_PATH}/users`
             : BASE_PATH;
+
+    _dispatch(setPageIconAction("pe-7s-pen"));
+    _dispatch(setPageTitleAction(strings._title, strings._subTitle));
 
     fillForm();
 };
@@ -143,8 +146,9 @@ const fetchPageData = async () => {
     }
 
     _dispatch(
-        setTitleAction(
-            `${strings._title} [ ${result.item.name} ${result.item.family} - ${result.item.username} ]`
+        setPageTitleAction(
+            `${strings._title} [ ${result.item.name} ${result.item.family} - ${result.item.username} ]`,
+            strings._subTitle
         )
     );
 };

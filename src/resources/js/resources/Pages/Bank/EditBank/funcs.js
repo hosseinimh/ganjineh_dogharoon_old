@@ -6,8 +6,9 @@ import {
 } from "../../../../constants/strings";
 import {
     setLoadingAction,
+    setPageIconAction,
     setPagePropsAction,
-    setTitleAction,
+    setPageTitleAction,
 } from "../../../../state/layout/layoutActions";
 import {
     clearMessageAction,
@@ -38,8 +39,9 @@ export const onLoad = (params) => {
 
     setBankId(params?.bankId);
 
-    _dispatch(setTitleAction(strings._title));
     _dispatch(setPagePropsAction(_pageProps));
+    _dispatch(setPageIconAction("pe-7s-news-paper"));
+    _dispatch(setPageTitleAction(strings._title));
 
     fillForm();
 };
@@ -128,6 +130,6 @@ const fetchPageData = async () => {
 
     _useForm.setValue("name", result.item.name);
 
-    _dispatch(setTitleAction(`${strings._title} [ ${result.item.name} ]`));
+    _dispatch(setPageTitleAction(`${strings._title} [ ${result.item.name} ]`));
     _dispatch(setLoadingAction(false));
 };

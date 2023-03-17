@@ -15,7 +15,7 @@ const SearchBox = ({ children, useForm, onSubmit }) => {
                     </div>
                 </div>
             </div>
-            <div className="card-body">{children}</div>
+            <div className="card-body mx-3">{children}</div>
             <div
                 className="card-footer bg-light"
                 style={{ backgroundColor: "rgba(0, 0, 21, 0.5)" }}

@@ -7,7 +7,7 @@ import {
 import {
     setLoadingAction,
     setPagePropsAction,
-    setTitleAction,
+    setPageTitleAction,
 } from "../../../../state/layout/layoutActions";
 import {
     clearMessageAction,
@@ -45,8 +45,9 @@ export const onLoad = (params) => {
 
     setUserId(params?.userId);
 
-    _dispatch(setTitleAction(strings._title));
     _dispatch(setPagePropsAction(_pageProps));
+    _dispatch(setPageIconAction("pe-7s-user"));
+    _dispatch(setPageTitleAction(strings._title));
 
     fillForm();
 };
@@ -158,7 +159,7 @@ const fetchPageData = async () => {
     );
 
     _dispatch(
-        setTitleAction(
+        setPageTitleAction(
             `${strings._title} [ ${result.item.name} ${result.item.family} - ${result.item.username} ]`
         )
     );

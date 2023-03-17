@@ -146,15 +146,18 @@ const BasePageLayout = ({
                 {userState.isAuthenticated && <Header />}
                 {userState.isAuthenticated && (
                     <div className="app-main">
-                        <Sidebar />
                         <div className="app-main__outer">
                             <div className="app-main__inner">
                                 <div className="app-page-title">
                                     <div className="page-title-wrapper">
                                         <div className="page-title-heading">
-                                            <div className="page-title-icon">
-                                                <i className="pe-7s-phone icon-gradient bg-premium-dark"></i>
-                                            </div>
+                                            {layoutState?.icon && (
+                                                <div className="page-title-icon">
+                                                    <i
+                                                        className={`${layoutState.icon} icon-gradient bg-premium-dark`}
+                                                    ></i>
+                                                </div>
+                                            )}
                                             <div>
                                                 {layoutState?.title}
                                                 <div className="page-title-subheading">

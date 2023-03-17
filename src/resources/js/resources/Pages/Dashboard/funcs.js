@@ -6,7 +6,7 @@ import { Dashboard as Entity } from "../../../http/entities";
 import {
     setLoadingAction,
     setPagePropsAction,
-    setTitleAction,
+    setPageTitleAction,
 } from "../../../state/layout/layoutActions";
 import { setMessageAction } from "../../../state/message/messageActions";
 import utils from "../../../utils/Utils";
@@ -29,7 +29,7 @@ export const onLoad = (params) => {
         usersCount: 0,
     };
 
-    _dispatch(setTitleAction(strings._title));
+    _dispatch(setPageTitleAction(strings._title));
     _dispatch(setPagePropsAction(_pageProps));
 
     fillForm();

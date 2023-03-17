@@ -18,6 +18,8 @@
     "dependencies": {
         "@hookform/resolvers": "^2.9.11",
         "crypto-js": "^4.1.1",
+        "es6-easings": "^1.1.0",
+        "es6-slide-up-down": "^1.0.0",
         "laravel-mix": "^6.0.49",
         "perfect-scrollbar": "^1.5.5",
         "react": "^18.2.0",
@@ -28,8 +30,6 @@
         "redux": "^4.2.1",
         "redux-devtools-extension": "^2.13.9",
         "redux-thunk": "^2.4.2",
-        "simplebar": "^6.2.1",
-        "simplebar-react": "^3.2.1",
         "yup": "^1.0.2"
     }
 }

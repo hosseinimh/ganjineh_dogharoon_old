@@ -5,8 +5,9 @@ import { villagesPage as strings } from "../../../../constants/strings";
 import { Village as Entity } from "../../../../http/entities";
 import {
     setLoadingAction,
+    setPageIconAction,
     setPagePropsAction,
-    setTitleAction,
+    setPageTitleAction,
 } from "../../../../state/layout/layoutActions";
 import { setMessageAction } from "../../../../state/message/messageActions";
 
@@ -31,8 +32,9 @@ export const onLoad = (params) => {
         action: null,
     };
 
-    _dispatch(setTitleAction(strings._title));
     _dispatch(setPagePropsAction(_pageProps));
+    _dispatch(setPageIconAction("pe-7s-news-paper"));
+    _dispatch(setPageTitleAction(strings._title, strings._subTitle));
 
     fillForm();
 };

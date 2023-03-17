@@ -5,7 +5,7 @@ import { addVillagePage as strings } from "../../../../constants/strings";
 import {
     setLoadingAction,
     setPagePropsAction,
-    setTitleAction,
+    setPageTitleAction,
 } from "../../../../state/layout/layoutActions";
 import {
     clearMessageAction,
@@ -34,7 +34,8 @@ export const onLoad = (params) => {
     };
 
     _dispatch(setPagePropsAction(_pageProps));
-    _dispatch(setTitleAction(strings._title));
+    _dispatch(setPageTitleAction(strings._title));
+    _dispatch(setPageIconAction("pe-7s-news-paper"));
 };
 
 export const onLayoutState = () => {};

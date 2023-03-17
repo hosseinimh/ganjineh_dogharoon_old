@@ -72,12 +72,16 @@ export const footer = {
 export const sidebar = {
     dashboard: "داشبورد",
     users: "کاربران",
+    mainContainer: "امکانات",
+    baseInformation: "اطلاعات پایه",
+    systemManagement: "مدیریت سیستم",
+    userContainer: "مدیریت کاربری",
     villages: "روستاها",
     banks: "بانک‌ها",
     relationships: "روابط خویشاوندی",
     editProfile: "ویرایش پروفایل",
     changePassword: "تغییر کلمه عبور",
-    logout: "خروج کاربری",
+    logout: "خروج",
 };
 
 export const dashboardPage = {
@@ -147,6 +151,7 @@ export const editUserPage = {
 
 export const changePasswordUserPage = {
     _title: "تغییر کلمه عبور",
+    _subTitle: "لطفا کلمه عبور مورد نظر خود را وارد نمایید.",
     newPassword: "کلمه عبور جدید",
     confirmPassword: "تایید کلمه عبور جدید",
     submitted: "تغییر کلمه عبور با موفقیت انجام گردید.",
@@ -159,6 +164,7 @@ export const districts = {
 
 export const villagesPage = {
     _title: "روستاها",
+    _subTitle: "فهرست روستاهای شهرستان تایباد",
     name: "نام",
     district: "بخش",
     add: "افزودن روستا",
