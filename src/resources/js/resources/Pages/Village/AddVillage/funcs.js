@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { addVillagePage as strings } from "../../../../constants/strings";
 import {
     setLoadingAction,
+    setPageIconAction,
     setPagePropsAction,
     setPageTitleAction,
 } from "../../../../state/layout/layoutActions";
@@ -34,8 +35,8 @@ export const onLoad = (params) => {
     };
 
     _dispatch(setPagePropsAction(_pageProps));
-    _dispatch(setPageTitleAction(strings._title));
     _dispatch(setPageIconAction("pe-7s-news-paper"));
+    _dispatch(setPageTitleAction(strings._title, strings._subTitle));
 };
 
 export const onLayoutState = () => {};

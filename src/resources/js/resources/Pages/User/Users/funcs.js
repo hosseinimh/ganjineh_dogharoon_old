@@ -34,7 +34,7 @@ export const onLoad = (params) => {
 
     _dispatch(setPagePropsAction(_pageProps));
     _dispatch(setPageIconAction("pe-7s-users"));
-    _dispatch(setPageTitleAction(strings._title));
+    _dispatch(setPageTitleAction(strings._title, strings._subTitle));
 
     fillForm();
 };

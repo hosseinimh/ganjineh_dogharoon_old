@@ -18,7 +18,7 @@ import { searchUserSchema as schema } from "../../../validations";
 
 const Users = () => {
     const layoutState = useSelector((state) => state.layoutReducer);
-    const columnsCount = 4;
+    const columnsCount = 5;
     const form = useForm({
         resolver: yupResolver(schema),
     });
@@ -47,6 +47,9 @@ const Users = () => {
             <th scope="col" style={{ width: "150px" }}>
                 {strings.role}
             </th>
+            <th scope="col" style={{ width: "100px" }}>
+                {strings.status}
+            </th>
         </tr>
     );
 
@@ -67,6 +70,11 @@ const Users = () => {
                         {item.role === USER_ROLES.ADMINISTRATOR
                             ? general.administrator
                             : general.user}
+                    </td>
+                    <td>
+                        {item.isActive === 1
+                            ? strings.active
+                            : strings.notActive}
                     </td>
                 </tr>
                 <tr>
@@ -108,6 +116,7 @@ const Users = () => {
             useForm={form}
             table={{ renderHeader, renderItems, renderFooter }}
             funcs={funcs}
+            hasAdd={lsUser.role === USER_ROLES.ADMINISTRATOR ? true : false}
         >
             <SearchBox useForm={form} onSubmit={funcs.onSubmit}>
                 {renderSearch()}

@@ -36,7 +36,7 @@ export const onLoad = (params) => {
 
     _dispatch(setPagePropsAction(_pageProps));
     _dispatch(setPageIconAction("pe-7s-news-paper"));
-    _dispatch(setPageTitleAction(strings._title));
+    _dispatch(setPageTitleAction(strings._title, strings._subTitle));
 };
 
 export const onLayoutState = () => {};

@@ -35,13 +35,14 @@ export const init = (dispatch, navigate, useForm) => {
 export const onLoad = (params) => {
     _pageProps = {
         action: null,
+        districtId: null,
     };
 
     setVillageId(params?.villageId);
 
-    _dispatch(setPageTitleAction(strings._title));
-    _dispatch(setPageIconAction("pe-7s-news-paper"));
     _dispatch(setPagePropsAction(_pageProps));
+    _dispatch(setPageIconAction("pe-7s-news-paper"));
+    _dispatch(setPageTitleAction(strings._title, strings._subTitle));
 
     fillForm();
 };
@@ -131,6 +132,16 @@ const fetchPageData = async () => {
     _useForm.setValue("district", result.item.districtId);
     _useForm.setValue("name", result.item.name);
 
-    _dispatch(setPageTitleAction(`${strings._title} [ ${result.item.name} ]`));
+    _dispatch(
+        setPagePropsAction({
+            districtId: result.item.districtId,
+        })
+    );
+    _dispatch(
+        setPageTitleAction(
+            `${strings._title} [ ${result.item.name} ]`,
+            strings._subTitle
+        )
+    );
     _dispatch(setLoadingAction(false));
 };

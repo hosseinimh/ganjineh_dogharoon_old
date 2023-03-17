@@ -85,6 +85,10 @@ const BasePageLayout = ({
     }, [useForm?.formState?.errors]);
 
     useEffect(() => {
+        dispatch(setPageAction(page));
+    }, [page]);
+
+    useEffect(() => {
         window.scrollTo(0, 0);
 
         const user = utils.getLSUser();
@@ -96,7 +100,6 @@ const BasePageLayout = ({
             return;
         }
 
-        dispatch(setPageAction(page));
         dispatch(setPagePropsAction({ strings, useForm }));
         dispatch(setRenderMessageAction());
 

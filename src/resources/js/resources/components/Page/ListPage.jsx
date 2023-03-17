@@ -29,7 +29,7 @@ const ListPage = ({
             {children}
             {(hasAdd || backUrl) && (
                 <div className="row mb-2">
-                    <div className="col-sm-12 mb-4">
+                    <div className="col-sm-12">
                         {hasAdd && (
                             <button
                                 className="btn btn-success px-4"

@@ -5,8 +5,10 @@ import { banksPage as strings, general } from "../../../../constants/strings";
 import * as funcs from "./funcs";
 import { ListPage, TableItems } from "../../../components";
 import utils from "../../../../utils/Utils";
+import { USER_ROLES } from "../../../../constants";
 
 const Banks = () => {
+    const lsUser = utils.getLSUser();
     const layoutState = useSelector((state) => state.layoutReducer);
     const columnsCount = 2;
 
@@ -57,6 +59,7 @@ const Banks = () => {
             strings={strings}
             table={{ renderHeader, renderItems }}
             funcs={funcs}
+            hasAdd={lsUser.role === USER_ROLES.ADMINISTRATOR ? true : false}
         ></ListPage>
     );
 };

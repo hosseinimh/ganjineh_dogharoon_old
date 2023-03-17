@@ -10,7 +10,7 @@ const SearchBox = ({ children, useForm, onSubmit }) => {
         <div className="card mb-4">
             <div className="card-header bg-info">
                 <div className="row">
-                    <div className="col-12">
+                    <div className="col-12 mx-3">
                         <span className="text-white">{general.search}</span>
                     </div>
                 </div>

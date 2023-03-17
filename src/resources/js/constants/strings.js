@@ -73,6 +73,7 @@ export const sidebar = {
     dashboard: "داشبورد",
     users: "کاربران",
     mainContainer: "امکانات",
+    servicesContainer: "خدمات",
     baseInformation: "اطلاعات پایه",
     systemManagement: "مدیریت سیستم",
     userContainer: "مدیریت کاربری",
@@ -86,6 +87,7 @@ export const sidebar = {
 
 export const dashboardPage = {
     _title: "داشبورد",
+    _subTitle: "سامانه در یک نگاه",
     users: "کاربران",
 };
 
@@ -102,11 +104,15 @@ export const loginUserPage = {
 
 export const usersPage = {
     _title: "کاربران",
+    _subTitle: "فهرست کاربران سامانه",
     username: "نام کاربری",
     usernamePlaceholder: "نام کاربری",
     nameFamily: "نام / نام خانوادگی",
     nameFamilyPlaceholder: "نام / نام خانوادگی",
     role: "نوع کاربری",
+    status: "وضعیت",
+    active: "فعال",
+    notActive: "غیر فعال",
     addUser: "افزودن کاربر",
     searchSubmit: "جستجو",
     changePassword: "تغییر کلمه عبور",
@@ -115,6 +121,7 @@ export const usersPage = {
 
 export const addUserPage = {
     _title: "افزودن کاربر",
+    _subTitle: "مشخصات کاربر جدید را وارد نمایید.",
     username: "نام کاربری",
     usernamePlaceholder: "نام کاربری",
     password: "کلمه عبور",
@@ -135,6 +142,7 @@ export const addUserPage = {
 
 export const editUserPage = {
     _title: "ویرایش کاربر",
+    _subTitle: "مشخصات کاربر تعریف شده را ویرایش نمایید.",
     name: "نام",
     namePlaceholder: "نام",
     family: "نام خانوادگی",
@@ -172,6 +180,7 @@ export const villagesPage = {
 
 export const addVillagePage = {
     _title: "افزودن روستا",
+    _subTitle: "مشخصات روستای جدید را وارد نمایید.",
     district: "بخش",
     name: "روستا",
     namePlaceholder: "روستا",
@@ -180,6 +189,7 @@ export const addVillagePage = {
 
 export const editVillagePage = {
     _title: "ویرایش روستا",
+    _subTitle: "مشخصات روستا را ویرایش نمایید.",
     district: "بخش",
     name: "روستا",
     namePlaceholder: "روستا",
@@ -188,12 +198,14 @@ export const editVillagePage = {
 
 export const banksPage = {
     _title: "بانک‌ها",
+    _subTitle: "فهرست بانک‌های تعریف شده",
     name: "بانک",
     add: "افزودن بانک",
 };
 
 export const addBankPage = {
     _title: "افزودن بانک",
+    _subTitle: "مشخصات بانک جدید را وارد نمایید.",
     name: "بانک",
     namePlaceholder: "بانک",
     submitted: "افزودن بانک با موفقیت انجام گردید.",
@@ -201,6 +213,7 @@ export const addBankPage = {
 
 export const editBankPage = {
     _title: "ویرایش بانک",
+    _subTitle: "مشخصات بانک تعریف شده را ویرایش نمایید.",
     name: "بانک",
     namePlaceholder: "بانک",
     submitted: "ویرایش بانک با موفقیت انجام گردید.",
@@ -208,12 +221,14 @@ export const editBankPage = {
 
 export const relationshipsPage = {
     _title: "روابط خویشاوندی",
+    _subTitle: "فهرست روابط خویشاوندی تعریف شده",
     name: "رابطه خویشاوندی",
     add: "افزودن رابطه خویشاوندی",
 };
 
 export const addRelationshipPage = {
     _title: "افزودن رابطه خویشاوندی",
+    _subTitle: "یک رابطه خویشاوندی جدید تعریف نمایید.",
     name: "رابطه خویشاوندی",
     namePlaceholder: "رابطه خویشاوندی",
     submitted: "افزودن رابطه خویشاوندی با موفقیت انجام گردید.",
@@ -221,6 +236,7 @@ export const addRelationshipPage = {
 
 export const editRelationshipPage = {
     _title: "ویرایش رابطه خویشاوندی",
+    _subTitle: "رابطه خویشاوندی تعریف شده را ویرایش نمایید.",
     name: "رابطه خویشاوندی",
     namePlaceholder: "رابطه خویشاوندی",
     submitted: "ویرایش رابطه خویشاوندی با موفقیت انجام گردید.",

@@ -1,25 +1,20 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import {
     InputTextColumn,
     FormPage,
-    InputSelectColumn,
+    InputReactSelectColumn,
 } from "../../../components";
 import * as funcs from "./funcs";
-import {
-    districts,
-    editVillagePage as strings,
-} from "../../../../constants/strings";
+import { editVillagePage as strings } from "../../../../constants/strings";
 import { editVillageSchema as schema } from "../../../validations";
-
-const districtItems = [
-    { id: 1, value: districts.district1 },
-    { id: 2, value: districts.district2 },
-];
+import { districtItems } from "../Villages";
 
 const EditVillage = () => {
+    const layoutState = useSelector((state) => state.layoutReducer);
     const form = useForm({
         resolver: yupResolver(schema),
     });
@@ -31,7 +26,12 @@ const EditVillage = () => {
             funcs={funcs}
             useForm={form}
         >
-            <InputSelectColumn items={districtItems} field="district" />
+            <InputReactSelectColumn
+                options={districtItems}
+                field="district"
+                handleChange={(value) => form.setValue("district", value)}
+                defaultValue={layoutState?.pageProps?.districtId}
+            />
             <InputTextColumn field="name" />
         </FormPage>
     );

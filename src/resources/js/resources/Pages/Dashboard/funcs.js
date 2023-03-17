@@ -5,6 +5,7 @@ import { dashboardPage as strings } from "../../../constants/strings";
 import { Dashboard as Entity } from "../../../http/entities";
 import {
     setLoadingAction,
+    setPageIconAction,
     setPagePropsAction,
     setPageTitleAction,
 } from "../../../state/layout/layoutActions";
@@ -29,8 +30,9 @@ export const onLoad = (params) => {
         usersCount: 0,
     };
 
-    _dispatch(setPageTitleAction(strings._title));
     _dispatch(setPagePropsAction(_pageProps));
+    _dispatch(setPageIconAction("pe-7s-rocket"));
+    _dispatch(setPageTitleAction(strings._title, strings._subTitle));
 
     fillForm();
 };

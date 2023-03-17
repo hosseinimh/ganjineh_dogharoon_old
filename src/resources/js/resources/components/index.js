@@ -30,6 +30,7 @@ import InputTextColumn from "./Input/InputTextColumn";
 import InputTextAreaColumn from "./Input/InputTextAreaColumn";
 import InputFileColumn from "./Input/InputFileColumn";
 import InputSelectColumn from "./Input/InputSelectColumn";
+import InputReactSelectColumn from "./Input/InputReactSelectColumn";
 import InputRadioColumn from "./Input/InputRadioColumn";
 import InputCheckboxColumn from "./Input/InputCheckboxColumn";
 import InputSwitchCheckboxColumn from "./Input/InputSwitchCheckboxColumn";
@@ -62,6 +63,7 @@ export {
     InputTextAreaColumn,
     InputFileColumn,
     InputSelectColumn,
+    InputReactSelectColumn,
     InputRadioColumn,
     InputSwitchCheckboxColumn,
     InputCheckboxColumn,

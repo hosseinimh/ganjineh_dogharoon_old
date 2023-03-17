@@ -5,19 +5,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import {
     InputTextColumn,
     FormPage,
-    InputSelectColumn,
+    InputReactSelectColumn,
 } from "../../../components";
 import * as funcs from "./funcs";
-import {
-    addVillagePage as strings,
-    districts,
-} from "../../../../constants/strings";
+import { addVillagePage as strings } from "../../../../constants/strings";
 import { addVillageSchema as schema } from "../../../validations";
-
-const districtItems = [
-    { id: 1, value: districts.district1 },
-    { id: 2, value: districts.district2 },
-];
+import { districtItems } from "../Villages";
 
 const AddVillage = () => {
     const form = useForm({
@@ -31,7 +24,13 @@ const AddVillage = () => {
             funcs={funcs}
             useForm={form}
         >
-            <InputSelectColumn items={districtItems} field="district" />
+            <InputReactSelectColumn
+                options={districtItems}
+                field="district"
+                handleChange={(value) => {
+                    form.setValue("district", value);
+                }}
+            />
             <InputTextColumn field="name" />
         </FormPage>
     );

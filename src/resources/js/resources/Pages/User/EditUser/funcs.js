@@ -6,6 +6,7 @@ import {
 } from "../../../../constants/strings";
 import {
     setLoadingAction,
+    setPageIconAction,
     setPagePropsAction,
     setPageTitleAction,
 } from "../../../../state/layout/layoutActions";
@@ -41,13 +42,14 @@ export const init = (dispatch, navigate, useForm) => {
 export const onLoad = (params) => {
     _pageProps = {
         action: null,
+        userId: null,
     };
 
     setUserId(params?.userId);
 
     _dispatch(setPagePropsAction(_pageProps));
     _dispatch(setPageIconAction("pe-7s-user"));
-    _dispatch(setPageTitleAction(strings._title));
+    _dispatch(setPageTitleAction(strings._title, strings._subTitle));
 
     fillForm();
 };
@@ -158,6 +160,7 @@ const fetchPageData = async () => {
         "on"
     );
 
+    _dispatch(setPagePropsAction({ userId: result.item.id }));
     _dispatch(
         setPageTitleAction(
             `${strings._title} [ ${result.item.name} ${result.item.family} - ${result.item.username} ]`

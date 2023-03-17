@@ -108,7 +108,7 @@ const Header = () => {
                                             <img
                                                 width="42"
                                                 className="rounded-circle"
-                                                src={`${ASSETS_PATH}/images/1.jpg`}
+                                                src={`${ASSETS_PATH}/images/user.png`}
                                                 alt=""
                                             />
                                             <i className="fa fa-angle-down mr-2 opacity-8"></i>
@@ -124,7 +124,7 @@ const Header = () => {
                                                     <div
                                                         className="menu-header-image opacity-2"
                                                         style={{
-                                                            backgroundImage: `url("${ASSETS_PATH}/images/city.jpg")`,
+                                                            backgroundImage: `url("${ASSETS_PATH}/images/menu-bg2.jpg")`,
                                                         }}
                                                     ></div>
                                                     <div className="menu-header-content text-right">
@@ -134,7 +134,7 @@ const Header = () => {
                                                                     <img
                                                                         width="42"
                                                                         className="rounded-circle"
-                                                                        src={`${ASSETS_PATH}/images/1.jpg`}
+                                                                        src={`${ASSETS_PATH}/images/user.png`}
                                                                         alt=""
                                                                     />
                                                                 </div>

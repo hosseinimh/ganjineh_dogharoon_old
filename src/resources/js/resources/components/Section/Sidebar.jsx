@@ -5,9 +5,8 @@ import PerfectScrollbar from "perfect-scrollbar";
 import { slideUp, slideDown } from "es6-slide-up-down";
 import { easeOutQuint } from "es6-easings";
 
-import { BASE_PATH, USER_ROLES } from "../../../constants";
-import { sidebar as strings, general } from "../../../constants/strings";
-import utils from "../../../utils/Utils";
+import { BASE_PATH } from "../../../constants";
+import { sidebar as strings } from "../../../constants/strings";
 import { fetchLogoutAction } from "../../../state/user/userActions";
 import { CustomLink } from "../";
 
@@ -15,7 +14,6 @@ function Sidebar() {
     const dispatch = useDispatch();
     const layoutState = useSelector((state) => state.layoutReducer);
     const [page, setPage] = useState(null);
-    const lsUser = utils.getLSUser();
 
     useEffect(() => {
         setPage(layoutState?.page);
@@ -253,20 +251,6 @@ function Sidebar() {
         }
     };
 
-    const toggleLink = (e) => {
-        e.preventDefault();
-
-        const element = e.target.parentNode;
-
-        if (element.classList.contains("show")) {
-            element.classList.remove("show");
-            element.setAttribute("aria-expanded", false);
-        } else {
-            element.classList.add("show");
-            element.setAttribute("aria-expanded", true);
-        }
-    };
-
     const onLogout = () => {
         dispatch(fetchLogoutAction());
     };
@@ -336,6 +320,15 @@ function Sidebar() {
                         <li className="app-sidebar__heading">
                             {strings.mainContainer}
                         </li>
+                        {renderMenuItem(
+                            `${BASE_PATH}`,
+                            strings.dashboard,
+                            "pe-7s-rocket",
+                            "Dashboard"
+                        )}
+                        <li className="app-sidebar__heading">
+                            {strings.servicesContainer}
+                        </li>
                         <li>
                             <a
                                 href="#"
@@ -389,7 +382,7 @@ function Sidebar() {
                             `${BASE_PATH}/users/edit`,
                             strings.editProfile,
                             "pe-7s-id",
-                            "EditUser"
+                            "EditProfile"
                         )}
                         {renderMenuItem(
                             `${BASE_PATH}/users/change_password`,
@@ -411,7 +404,7 @@ function Sidebar() {
                 <div
                     className="app-sidebar-bg opacity-06"
                     style={{
-                        backgroundImage: 'url("/assets/images/city.jpg")',
+                        backgroundImage: 'url("/assets/images/menu-bg1.jpg")',
                     }}
                 ></div>
             </div>

@@ -4,12 +4,20 @@ import { useSelector } from "react-redux";
 import {
     villagesPage as strings,
     general,
+    districts,
 } from "../../../../constants/strings";
 import * as funcs from "./funcs";
 import { ListPage, TableItems } from "../../../components";
 import utils from "../../../../utils/Utils";
+import { USER_ROLES } from "../../../../constants";
+
+export const districtItems = [
+    { value: 1, label: districts.district1 },
+    { value: 2, label: districts.district2 },
+];
 
 const Villages = () => {
+    const lsUser = utils.getLSUser();
     const layoutState = useSelector((state) => state.layoutReducer);
     const columnsCount = 3;
 
@@ -64,6 +72,7 @@ const Villages = () => {
             strings={strings}
             table={{ renderHeader, renderItems }}
             funcs={funcs}
+            hasAdd={lsUser.role === USER_ROLES.ADMINISTRATOR ? true : false}
         ></ListPage>
     );
 };

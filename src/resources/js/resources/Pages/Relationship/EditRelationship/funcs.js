@@ -41,7 +41,7 @@ export const onLoad = (params) => {
 
     _dispatch(setPagePropsAction(_pageProps));
     _dispatch(setPageIconAction("pe-7s-news-paper"));
-    _dispatch(setPageTitleAction(strings._title));
+    _dispatch(setPageTitleAction(strings._title, strings._subTitle));
 
     fillForm();
 };
@@ -131,6 +131,11 @@ const fetchPageData = async () => {
 
     _useForm.setValue("name", result.item.name);
 
-    _dispatch(setPageTitleAction(`${strings._title} [ ${result.item.name} ]`));
+    _dispatch(
+        setPageTitleAction(
+            `${strings._title} [ ${result.item.name} ]`,
+            strings._subTitle
+        )
+    );
     _dispatch(setLoadingAction(false));
 };

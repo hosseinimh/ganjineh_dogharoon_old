@@ -8,8 +8,10 @@ import {
 import * as funcs from "./funcs";
 import { ListPage, TableItems } from "../../../components";
 import utils from "../../../../utils/Utils";
+import { USER_ROLES } from "../../../../constants";
 
 const Relationships = () => {
+    const lsUser = utils.getLSUser();
     const layoutState = useSelector((state) => state.layoutReducer);
     const columnsCount = 2;
 
@@ -60,6 +62,7 @@ const Relationships = () => {
             strings={strings}
             table={{ renderHeader, renderItems }}
             funcs={funcs}
+            hasAdd={lsUser.role === USER_ROLES.ADMINISTRATOR ? true : false}
         ></ListPage>
     );
 };

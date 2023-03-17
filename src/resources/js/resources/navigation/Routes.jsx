@@ -71,6 +71,10 @@ function AuthRoute() {
                         element={<Pages.Relationships />}
                     />
                     <Route
+                        path={`${BASE_PATH}/users/edit`}
+                        element={<Pages.EditUser />}
+                    />
+                    <Route
                         path={`${BASE_PATH}/users`}
                         element={<Pages.Users />}
                     />
