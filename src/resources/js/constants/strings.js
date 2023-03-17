@@ -1,7 +1,7 @@
-export const layout = { brand: "Ganjineh Dogharoon" };
+export const layout = { brand: "شرکت گنجینه دوغارون" };
 
 export const general = {
-    brand: "Ganjineh Dogharoon",
+    brand: "شرکت گنجینه دوغارون",
     add: "افزودن",
     edit: "ویرایش",
     remove: "حذف",
@@ -29,7 +29,6 @@ export const general = {
     noPermission: "شما مجوز ورود به این بخش را ندارید.",
     loading: "لطفا منتظر بمانید ...",
     networkError: "خطا در دریافت اطلاعات از سرور",
-    copyright: "Copyright © Mahmoud Hosseini - 2023",
 };
 
 export const utils = {
@@ -64,7 +63,8 @@ export const header = {
 };
 
 export const footer = {
-    copyright: "کلیه حقوق محفوظ است.",
+    copyright: "Copyright © شرکت گنجینه دوغارون",
+    developedBy: "طراحی و توسعه",
     developer: "محمود حسینی",
     developerUrl: "http://hosseinimh.com",
 };

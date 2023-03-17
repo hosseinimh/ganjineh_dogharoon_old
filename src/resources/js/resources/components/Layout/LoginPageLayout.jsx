@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import { AlertState } from "../../components";
-import { general } from "../../../constants/strings";
+import { footer, general } from "../../../constants/strings";
 import BasePageLayout from "./BasePageLayout";
 
 const LoginPageLayout = ({ children, strings, funcs, useForm }) => {
@@ -51,7 +51,7 @@ const LoginPageLayout = ({ children, strings, funcs, useForm }) => {
                                 </div>
                             </div>
                             <div className="text-center text-white opacity-8 mt-3">
-                                {general.copyright}
+                                {footer.copyright}
                             </div>
                         </div>
                     </div>

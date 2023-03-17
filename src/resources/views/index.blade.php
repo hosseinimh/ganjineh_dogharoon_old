@@ -41,19 +41,6 @@
             document.getElementById('loading').style.display = 'none';
         });
     </script>
-    <script>
-        window.addEventListener("resize", () => {
-            const container = document.querySelector(".app-container");
-
-            if (document.body.clientWidth < 1250) {
-                container.classList.add("closed-sidebar-mobile");
-                container.classList.add("closed-sidebar");
-            } else {
-                container.classList.remove("closed-sidebar-mobile");
-                container.classList.remove("closed-sidebar");
-            }
-        });
-    </script>
 </body>
 
 </html>

@@ -135,47 +135,44 @@ const BasePageLayout = ({
     };
 
     return (
-        <>
-            <div
-                className={`app-container app-theme-white body-tabs-shadow${
-                    userState.isAuthenticated
-                        ? " fixed-header fixed-sidebar"
-                        : ""
-                }`}
-            >
-                {userState.isAuthenticated && <Header />}
-                {userState.isAuthenticated && (
-                    <div className="app-main">
-                        <div className="app-main__outer">
-                            <div className="app-main__inner">
-                                <div className="app-page-title">
-                                    <div className="page-title-wrapper">
-                                        <div className="page-title-heading">
-                                            {layoutState?.icon && (
-                                                <div className="page-title-icon">
-                                                    <i
-                                                        className={`${layoutState.icon} icon-gradient bg-premium-dark`}
-                                                    ></i>
-                                                </div>
-                                            )}
-                                            <div>
-                                                {layoutState?.title}
-                                                <div className="page-title-subheading">
-                                                    {layoutState?.subTitle}
-                                                </div>
+        <div
+            className={`app-container app-theme-white body-tabs-shadow${
+                userState.isAuthenticated ? " fixed-header fixed-sidebar" : ""
+            }`}
+        >
+            {userState.isAuthenticated && <Header />}
+            {userState.isAuthenticated && (
+                <div className="app-main">
+                    <Sidebar />
+                    <div className="app-main__outer">
+                        <div className="app-main__inner">
+                            <div className="app-page-title">
+                                <div className="page-title-wrapper">
+                                    <div className="page-title-heading">
+                                        {layoutState?.icon && (
+                                            <div className="page-title-icon">
+                                                <i
+                                                    className={`${layoutState.icon} icon-gradient bg-premium-dark`}
+                                                ></i>
+                                            </div>
+                                        )}
+                                        <div>
+                                            {layoutState?.title}
+                                            <div className="page-title-subheading">
+                                                {layoutState?.subTitle}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                {children}
                             </div>
-                            <Footer />
+                            {children}
                         </div>
+                        <Footer />
                     </div>
-                )}
-                {!userState.isAuthenticated && { ...children }}
-            </div>
-        </>
+                </div>
+            )}
+            {!userState.isAuthenticated && { ...children }}
+        </div>
     );
 };
 

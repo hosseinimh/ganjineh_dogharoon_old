@@ -5,7 +5,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { InputTextColumn, LoginPageLayout } from "../../../components";
 import * as funcs from "./funcs";
 import {
-    general,
     loginUserPage as strings,
 } from "../../../../constants/strings";
 import { loginUserSchema as schema } from "../../../validations";
