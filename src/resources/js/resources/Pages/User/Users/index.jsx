@@ -17,6 +17,7 @@ import { USER_ROLES } from "../../../../constants";
 import { searchUserSchema as schema } from "../../../validations";
 
 const Users = () => {
+    const lsUser = utils.getLSUser();
     const layoutState = useSelector((state) => state.layoutReducer);
     const columnsCount = 5;
     const form = useForm({

@@ -10350,6 +10350,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Users = function Users() {
+  var lsUser = _utils_Utils__WEBPACK_IMPORTED_MODULE_6__["default"].getLSUser();
   var layoutState = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.layoutReducer;
   });
