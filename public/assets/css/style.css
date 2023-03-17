@@ -3962,7 +3962,7 @@ input[type="button"].btn-block {
 .nav {
   display: flex;
   flex-wrap: wrap;
-  padding-left: 0;
+  padding-right: 0;
   margin-bottom: 0;
   list-style: none;
 }
@@ -9229,7 +9229,7 @@ button,
   color: #343a40;
   white-space: nowrap;
   transition: all 0.2s;
-  margin: 0.1rem 0;
+  margin: 0 0;
 }
 .vertical-nav-menu li a:hover {
   background: #e0f3ff;
@@ -9273,7 +9273,7 @@ button,
 }
 .vertical-nav-menu ul {
   transition: padding 300ms;
-  padding: 0.5em 2rem 0 0;
+  padding: 0 2rem 0 0;
 }
 .vertical-nav-menu ul:before {
   content: "";
@@ -9678,13 +9678,14 @@ button,
   display: flex;
   align-content: center;
   align-items: center;
+  justify-content: space-between;
 }
-.app-footer .app-footer__inner .app-footer-left {
+.app-footer .app-footer__inner .app-footer-right {
   display: flex;
   align-items: center;
 }
-.app-footer .app-footer__inner .app-footer-right {
-  margin-left: auto;
+.app-footer .app-footer__inner .app-footer-left {
+  margin-right: auto;
   display: flex;
 }
 .footer-dots {
@@ -28406,7 +28407,7 @@ span.multiselect-native-select select {
   .app-page-title .page-title-subheading .breadcrumb {
     display: inline-block;
   }
-  .app-footer .app-footer__inner .app-footer-right {
+  .app-footer .app-footer__inner .app-footer-left {
     display: none;
   }
   .app-footer .app-footer__inner .app-footer-left {
