@@ -1,0 +1,37 @@
+<?php
+
+require_once __DIR__ . '/Helper/MessageHelper.php';
+
+return [
+    'name_required' => $requiredMessage('نام'),
+    'name_min' => $minStringMessage('نام', 3),
+    'name_max' => $maxStringMessage('نام', 50),
+    'family_required' => $requiredMessage('نام خانوادگی'),
+    'family_min' => $minStringMessage('نام خانوادگی', 3),
+    'family_max' => $maxStringMessage('نام خانوادگی', 50),
+    'member_no_required' => $requiredMessage('شماره عضویت'),
+    'member_no_numeric' => $numericMessage('شماره عضویت'),
+    'member_no_min' => $minNumericMessage('شماره عضویت', 1),
+    'card_no_required' => $requiredMessage('شماره کارت'),
+    'card_no_numeric' => $numericMessage('شماره کارت'),
+    'card_no_min' => $minNumericMessage('شماره کارت', 1),
+    'national_no_required' => $requiredMessage('شماره ملی'),
+    'national_no_digits' => $digitsMessage('شماره ملی'),
+    'identity_no_required' => $requiredMessage('شماره شناسنامه'),
+    'identity_no_numeric' => $numericMessage('شماره شناسنامه'),
+    'identity_no_gte' => $gteNumericMessage('شماره شناسنامه', 0),
+    'identity_no_lt' => $ltNumericMessage('شماره شناسنامه', 1000000),
+    'father_name_required' => $requiredMessage('نام پدر'),
+    'father_name_min' => $minStringMessage('نام پدر', 3),
+    'father_name_max' => $maxStringMessage('نام پدر', 50),
+    'birth_date_required' => $requiredMessage('تاریخ تولد'),
+    'birth_date_numeric' => $numericMessage('تاریخ تولد'),
+    'birth_date_gte' => $gteNumericMessage('تاریخ تولد', 13000101),
+    'membership_date_required' => $requiredMessage('تاریخ عضویت'),
+    'membership_date_numeric' => $numericMessage('تاریخ عضویت'),
+    'membership_date_gte' => $gteNumericMessage('تاریخ عضویت', 13800101),
+    'postal_code_max_digits' => $maxDigitsMessage('کد پستی', 10),
+    'address_max' => $maxStringMessage('آدرس', 300),
+    'tel_max_digits' => $maxDigitsMessage('شماره تلفن', 20),
+    'mobile_max_digits' => $maxDigitsMessage('شماره موبایل', 11),
+];

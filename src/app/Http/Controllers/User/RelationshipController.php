@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Relationship\IndexRelationshipsRequest;
 use App\Models\Relationship as Model;
 use App\Packages\JsonResponse;
 use App\Services\RelationshipService;
@@ -16,7 +15,7 @@ class RelationshipController extends Controller
         parent::__construct($response);
     }
 
-    public function index(IndexRelationshipsRequest $request): HttpJsonResponse
+    public function index(): HttpJsonResponse
     {
         return $this->onItems($this->service->getPaginate());
     }

@@ -5,21 +5,29 @@ namespace App\Providers;
 use App\Constants\Theme;
 use App\Http\Controllers\Administrator\BankController;
 use App\Http\Controllers\Administrator\DashboardController;
+use App\Http\Controllers\Administrator\MemberController;
+use App\Http\Controllers\Administrator\MemberRelationController;
 use App\Http\Controllers\Administrator\RelationshipController;
 use App\Http\Controllers\Administrator\UserController;
 use App\Http\Controllers\Administrator\VillageController;
 use App\Http\Controllers\User\BankController as UserBankController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
+use App\Http\Controllers\User\MemberController as UserMemberController;
+use App\Http\Controllers\User\MemberRelationController as UserMemberRelationController;
 use App\Http\Controllers\User\RelationshipController as UserRelationshipController;
 use App\Http\Controllers\User\UserController as UserUserController;
 use App\Http\Controllers\User\VillageController as UserVillageController;
 use App\Http\Resources\Bank\BankResource;
+use App\Http\Resources\Member\MemberResource;
+use App\Http\Resources\MemberRelation\MemberRelationResource;
 use App\Http\Resources\Relationship\RelationshipResource;
 use App\Http\Resources\User\UserResource;
 use App\Http\Resources\Village\VillageResource;
 use App\Packages\Helper;
 use App\Packages\JsonResponse;
 use App\Services\BankService;
+use App\Services\MemberRelationService;
+use App\Services\MemberService;
 use App\Services\RelationshipService;
 use App\Services\UserService;
 use App\Services\VillageService;
@@ -83,6 +91,22 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(UserRelationshipController::class, function ($app) {
             return new UserRelationshipController(new JsonResponse(RelationshipResource::class), $app->make(RelationshipService::class));
+        });
+
+        $this->app->bind(MemberController::class, function ($app) {
+            return new MemberController(new JsonResponse(MemberResource::class), $app->make(MemberService::class));
+        });
+
+        $this->app->bind(UserMemberController::class, function ($app) {
+            return new UserMemberController(new JsonResponse(MemberResource::class), $app->make(MemberService::class));
+        });
+
+        $this->app->bind(MemberRelationController::class, function ($app) {
+            return new MemberRelationController(new JsonResponse(MemberRelationResource::class), $app->make(MemberRelationService::class));
+        });
+
+        $this->app->bind(UserMemberRelationController::class, function ($app) {
+            return new UserMemberRelationController(new JsonResponse(MemberRelationResource::class), $app->make(MemberRelationService::class));
         });
     }
 }

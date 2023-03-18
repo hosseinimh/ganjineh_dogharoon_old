@@ -13,27 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_members', function (Blueprint $table) {
+        Schema::create('tbl_member_relations', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('family');
-            $table->unsignedBigInteger('member_no');
-            $table->unsignedBigInteger('card_no');
             $table->string('national_no');
             $table->string('identity_no');
-            $table->string('father_name');
             $table->string('birth_date');
-            $table->string('membership_date');
-            $table->string('postal_code');
-            $table->string('address');
-            $table->string('tel');
-            $table->string('mobile');
             $table->unsignedTinyInteger('gender');
-            $table->unsignedBigInteger('village_id');
+            $table->string('description');
+            $table->unsignedBigInteger('member_id');
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('village_id')->references('id')->on('tbl_villages');
+            $table->foreign('member_id')->references('id')->on('tbl_members');
         });
     }
 
@@ -44,7 +37,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('tbl_members', function (Blueprint $table) {
+        Schema::table('tbl_member_relations', function (Blueprint $table) {
             $table->dropSoftDeletes();
         });
     }

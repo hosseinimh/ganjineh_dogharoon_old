@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Administrator\DashboardController;
 use App\Http\Controllers\User\BankController;
+use App\Http\Controllers\User\MemberController;
+use App\Http\Controllers\User\MemberRelationController;
 use App\Http\Controllers\User\RelationshipController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\VillageController;
@@ -31,4 +33,10 @@ Route::middleware(['auth:sanctum', 'auth.logged'])->group(function () {
 
     Route::post('relationships', [RelationshipController::class, 'index']);
     Route::post('relationships/show/{model}', [RelationshipController::class, 'show']);
+
+    Route::post('members', [MemberController::class, 'index']);
+    Route::post('members/show/{model}', [MemberController::class, 'show']);
+
+    Route::post('member_relations/{member}', [MemberRelationController::class, 'index']);
+    Route::post('member_relations/show/{model}', [MemberRelationController::class, 'show']);
 });

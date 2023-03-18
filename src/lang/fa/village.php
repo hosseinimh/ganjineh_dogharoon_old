@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/MessageHelper.php';
+require_once __DIR__ . '/Helper/MessageHelper.php';
 
 return [
     'district_undefined' => '',

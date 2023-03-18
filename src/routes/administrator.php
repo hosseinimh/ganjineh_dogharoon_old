@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Administrator\BankController;
 use App\Http\Controllers\Administrator\DashboardController;
+use App\Http\Controllers\Administrator\MemberController;
+use App\Http\Controllers\Administrator\MemberRelationController;
 use App\Http\Controllers\Administrator\RelationshipController;
 use App\Http\Controllers\Administrator\UserController;
 use App\Http\Controllers\Administrator\VillageController;
@@ -30,4 +32,10 @@ Route::middleware(['auth:sanctum', 'auth.administrator'])->group(function () {
 
     Route::post('relationships/store', [RelationshipController::class, 'store']);
     Route::post('relationships/update/{model}', [RelationshipController::class, 'update']);
+
+    Route::post('members/store', [MemberController::class, 'store']);
+    Route::post('members/update/{model}', [MemberController::class, 'update']);
+
+    Route::post('member_relations/store/{member}', [MemberRelationController::class, 'store']);
+    Route::post('member_relations/update/{model}', [MemberRelationController::class, 'update']);
 });

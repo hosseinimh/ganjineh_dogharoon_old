@@ -8,7 +8,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
 use Illuminate\Validation\ValidationException;
 
-class StoreMemberRequest extends FormRequest
+class UpdateMemberRequest extends FormRequest
 {
     protected function failedValidation(Validator $validator)
     {
