@@ -11,6 +11,7 @@ import CustomLink from "../Link/CustomLink";
 const Header = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const layoutState = useSelector((state) => state.layoutReducer);
     const userState = useSelector((state) => state.userReducer);
     const authUser = utils.getLSUser();
 
@@ -36,6 +37,20 @@ const Header = () => {
     const onChanePassword = () => {
         navigate(`${BASE_PATH}/users/change_password`);
     };
+
+    const closeWidget = () => {
+        const btn = document.querySelector(".btn-group");
+        btn.classList.remove("show");
+        btn.childNodes[0].setAttribute("aria-expanded", "false");
+        btn.childNodes[1].classList.remove("show");
+        btn.childNodes[1].style = "";
+    };
+
+    useEffect(() => {
+        if (layoutState?.dropDowns?.includes("widget-content")) {
+            closeWidget();
+        }
+    }, [layoutState]);
 
     useEffect(() => {
         if (!userState.isAuthenticated) {
@@ -166,9 +181,18 @@ const Header = () => {
                                             <ul className="nav flex-column p-0">
                                                 <li className="nav-item-btn nav-item">
                                                     <CustomLink
+                                                        onClick={
+                                                            onChanePassword
+                                                        }
+                                                    >
+                                                        {strings.changePassword}
+                                                    </CustomLink>
+                                                </li>
+                                                <li className="nav-item-btn nav-item">
+                                                    <CustomLink
                                                         onClick={onEditUser}
                                                     >
-                                                        {strings.editUser}
+                                                        {strings.editProfile}
                                                     </CustomLink>
                                                 </li>
                                             </ul>

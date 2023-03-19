@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import LoadingBar from "react-top-loading-bar";
 
-const TopLoadingBar = () => {
+const TopLoadingBar = ({ color = "#2998ff", height = 2 }) => {
     const layoutState = useSelector((state) => state.layoutReducer);
     const [progress, setProgress] = useState(0);
     const [loadingInterval, setLoadingInterval] = useState(null);
@@ -13,8 +13,7 @@ const TopLoadingBar = () => {
         }
 
         if (!layoutState?.loading) {
-            clearInterval(loadingInterval);
-            setLoadingInterval(null);
+            restart();
         }
     }, [layoutState?.loading]);
 
@@ -56,9 +55,9 @@ const TopLoadingBar = () => {
     if (layoutState?.loading && progress > 0) {
         return (
             <LoadingBar
-                color="#2998ff"
+                color={color}
                 progress={progress}
-                height={2}
+                height={height}
                 shadow={false}
             />
         );

@@ -3,12 +3,15 @@ import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 
 import store from "../state/store";
+import ErrorBoundary from "./components/Error/ErrorBoundry";
 import { Routes } from "./navigation";
 
 function App() {
     return (
         <Provider store={store}>
-            <Routes />
+            <ErrorBoundary>
+                <Routes />
+            </ErrorBoundary>
         </Provider>
     );
 }

@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 import { general } from "../../../constants/strings";
 
-const SearchBox = ({ children, useForm, onSubmit }) => {
+const SearchBox = ({ children, useForm, onSubmit, onReset }) => {
     const ls = useSelector((state) => state.layoutReducer);
 
     return (
@@ -36,7 +36,7 @@ const SearchBox = ({ children, useForm, onSubmit }) => {
                             type="button"
                             disabled={ls?.loading}
                             title={general.reset}
-                            onClick={() => useForm.reset()}
+                            onClick={onReset}
                         >
                             {general.reset}
                         </button>

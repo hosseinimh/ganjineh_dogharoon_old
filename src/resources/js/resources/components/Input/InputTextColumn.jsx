@@ -67,7 +67,7 @@ const InputTextColumn = ({
     );
 
     return (
-        <div className={`form-group ml-2 ${columnClassName}`}>
+        <div className={`form-group ${columnClassName}`}>
             {showLabel && (
                 <label className="form-label" htmlFor={field}>
                     {label}

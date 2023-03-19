@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import { AlertState } from "../../components";
-import { footer, general } from "../../../constants/strings";
+import { footer } from "../../../constants/strings";
 import BasePageLayout from "./BasePageLayout";
 
 const LoginPageLayout = ({ children, strings, funcs, useForm }) => {

@@ -7,6 +7,7 @@ const initialState = {
     icon: null,
     loading: false,
     pageProps: null,
+    dropDowns: null,
 };
 
 const layoutReducer = (state = initialState, { type, payload }) => {
@@ -29,7 +30,12 @@ const layoutReducer = (state = initialState, { type, payload }) => {
         case layoutActions.SET_LOADING_ACTION:
             return {
                 ...state,
-                loading: payload.loading,
+                loading: payload,
+            };
+        case layoutActions.CLOSE_DROP_DOWN_ACTION:
+            return {
+                ...state,
+                dropDowns: payload,
             };
         default:
             return state;

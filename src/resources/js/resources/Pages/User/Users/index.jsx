@@ -119,7 +119,11 @@ const Users = () => {
             funcs={funcs}
             hasAdd={lsUser.role === USER_ROLES.ADMINISTRATOR ? true : false}
         >
-            <SearchBox useForm={form} onSubmit={funcs.onSubmit}>
+            <SearchBox
+                useForm={form}
+                onSubmit={funcs.onSubmit}
+                onReset={funcs.onReset}
+            >
                 {renderSearch()}
             </SearchBox>
         </ListPage>

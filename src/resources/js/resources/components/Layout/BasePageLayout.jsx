@@ -7,6 +7,7 @@ import {
     setPageAction,
     setLoadingAction,
     setPagePropsAction,
+    closeDropDownAction,
 } from "../../../state/layout/layoutActions";
 import {
     clearMessageAction,
@@ -137,11 +138,27 @@ const BasePageLayout = ({
         }
     };
 
+    const onAppContainerClick = (e) => {
+        let clickedOnWidget = false;
+        let element = e.target;
+        while (element.parentNode) {
+            if (element.parentNode.classList?.contains("widget-content")) {
+                clickedOnWidget = true;
+                break;
+            }
+            element = element.parentNode;
+        }
+        if (!clickedOnWidget) {
+            dispatch(closeDropDownAction(["widget-content"]));
+        }
+    };
+
     return (
         <div
             className={`app-container app-theme-white body-tabs-shadow${
                 userState.isAuthenticated ? " fixed-header fixed-sidebar" : ""
             }`}
+            onClick={(e) => onAppContainerClick(e)}
         >
             <TopLoadingBar />
             {userState.isAuthenticated && <Header />}

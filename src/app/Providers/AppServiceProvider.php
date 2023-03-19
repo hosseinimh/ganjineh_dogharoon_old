@@ -6,6 +6,7 @@ use App\Constants\Theme;
 use App\Http\Controllers\Administrator\BankController;
 use App\Http\Controllers\Administrator\CountryController;
 use App\Http\Controllers\Administrator\DashboardController;
+use App\Http\Controllers\Administrator\ErrorController;
 use App\Http\Controllers\Administrator\MemberController;
 use App\Http\Controllers\Administrator\MemberRelationController;
 use App\Http\Controllers\Administrator\RelationshipController;
@@ -21,6 +22,7 @@ use App\Http\Controllers\User\UserController as UserUserController;
 use App\Http\Controllers\User\VillageController as UserVillageController;
 use App\Http\Resources\Bank\BankResource;
 use App\Http\Resources\Country\CountryResource;
+use App\Http\Resources\Error\ErrorResource;
 use App\Http\Resources\Member\MemberResource;
 use App\Http\Resources\MemberRelation\MemberRelationResource;
 use App\Http\Resources\Relationship\RelationshipResource;
@@ -30,6 +32,7 @@ use App\Packages\Helper;
 use App\Packages\JsonResponse;
 use App\Services\BankService;
 use App\Services\CountryService;
+use App\Services\ErrorService;
 use App\Services\MemberRelationService;
 use App\Services\MemberService;
 use App\Services\RelationshipService;
@@ -56,6 +59,10 @@ class AppServiceProvider extends ServiceProvider
         });
 
         View::share('THEME', Theme::class);
+
+        $this->app->bind(ErrorController::class, function ($app) {
+            return new ErrorController(new JsonResponse(ErrorResource::class), $app->make(ErrorService::class));
+        });
 
         $this->app->bind(DashboardController::class, function ($app) {
             return new DashboardController($app->make(JsonResponse::class));

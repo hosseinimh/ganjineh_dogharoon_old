@@ -29,6 +29,8 @@ export const general = {
     noPermission: "شما مجوز ورود به این بخش را ندارید.",
     loading: "لطفا منتظر بمانید ...",
     networkError: "خطا در دریافت اطلاعات از سرور",
+    fallbackError: "خطایی در نمایش صفحه مورد نظر رخ داد.",
+    fallbackReturnHome: "بازگشت به داشبورد مدیریت",
 };
 
 export const utils = {
@@ -56,9 +58,8 @@ export const validation = {
 };
 
 export const header = {
-    home: "خانه",
     changePassword: "تغییر کلمه عبور",
-    editUser: "ویرایش کاربر",
+    editProfile: "ویرایش پروفایل",
     logout: "خروج",
 };
 

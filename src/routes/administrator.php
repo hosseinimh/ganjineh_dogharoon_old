@@ -3,6 +3,7 @@
 use App\Http\Controllers\Administrator\BankController;
 use App\Http\Controllers\Administrator\CountryController;
 use App\Http\Controllers\Administrator\DashboardController;
+use App\Http\Controllers\Administrator\ErrorController;
 use App\Http\Controllers\Administrator\MemberController;
 use App\Http\Controllers\Administrator\MemberRelationController;
 use App\Http\Controllers\Administrator\RelationshipController;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 // not logged users
 Route::middleware(['cors'])->group(function () {
     Route::post('users/login', [UserController::class, 'login']);
+    Route::post('errors/store', [ErrorController::class, 'store']);
 });
 
 // 'administrator' type users

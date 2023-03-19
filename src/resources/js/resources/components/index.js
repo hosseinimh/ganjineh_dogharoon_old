@@ -23,6 +23,10 @@ import TopLoadingBar from "./Loading/TopLoadingBar";
 import AlertMessage from "./Alert/AlertMessage";
 import AlertState from "./Alert/AlertState";
 
+// Error
+import ErrorBoundry from "./Error/ErrorBoundry";
+import FallbackError from "./Error/FallbackError";
+
 // Table
 import Table from "./Table/Table";
 import TableItems from "./Table/TableItems";
@@ -60,6 +64,8 @@ export {
     TopLoadingBar,
     AlertMessage,
     AlertState,
+    ErrorBoundry,
+    FallbackError,
     Table,
     TableItems,
     TableFooter,

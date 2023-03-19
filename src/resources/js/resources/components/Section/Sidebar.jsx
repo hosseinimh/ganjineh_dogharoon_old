@@ -168,7 +168,6 @@ function Sidebar() {
                     link.classList.remove("mb-1");
                     slideUp(link.nextElementSibling);
                 } else {
-                    closeOtherMenus(links, link);
                     parent.classList.add("mm-active");
                     link.setAttribute("aria-expanded", "true");
                     link.classList.add("mb-1");
@@ -181,37 +180,17 @@ function Sidebar() {
         });
     };
 
-    const closeOtherMenus = (links, exceptLink) => {
-        const otherLinks = links.filter((l) => l !== exceptLink);
-        otherLinks.forEach((link) => {
-            link.parentNode.classList.remove("mm-active");
-            link.setAttribute("aria-expanded", "false");
-            slideUp(link.nextElementSibling);
-        });
-    };
-
     const selectPage = () => {
         const links = [...document.querySelectorAll("[datapage")];
-        links.forEach((link) => {
-            link.firstChild.classList.remove("mm-active");
-            if (link.parentNode.classList.contains("mm-collapse")) {
-                link.parentNode.style = "display:none;";
-            }
-            if (link.parentNode.parentNode.nodeName === "LI") {
-                link.parentNode.parentNode.classList.remove("mm-active");
-            }
-        });
-        links.forEach((link) => {
-            if (link.getAttribute("datapage") == page) {
-                link.firstChild.classList.add("mm-active");
-                if (link.parentNode.classList.contains("mm-collapse")) {
-                    link.parentNode.style = "display:block;";
-                }
-                if (link.parentNode.parentNode.nodeName === "LI") {
-                    link.parentNode.parentNode.classList.add("mm-active");
-                }
-            }
-        });
+        let link = links.filter((l) => l.getAttribute("datapage") === page);
+        link = link.length > 0 ? link[0] : null;
+        link.firstChild.classList.add("mm-active");
+        if (link.parentNode.classList.contains("mm-collapse")) {
+            link.parentNode.style = "display:block;";
+        }
+        if (link.parentNode.parentNode.nodeName === "LI") {
+            link.parentNode.parentNode.classList.add("mm-active");
+        }
     };
 
     const onPageLoad = () => {

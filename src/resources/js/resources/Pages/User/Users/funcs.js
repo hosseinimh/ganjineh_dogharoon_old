@@ -13,13 +13,15 @@ import { setMessageAction } from "../../../../state/message/messageActions";
 
 let _dispatch;
 let _navigate;
+let _useForm;
 let _ls;
 let _pageProps;
 let _entity = new Entity();
 
-export const init = (dispatch, navigate) => {
+export const init = (dispatch, navigate, useForm) => {
     _dispatch = dispatch;
     _navigate = navigate;
+    _useForm = useForm;
     _ls = useSelector((state) => state.layoutReducer);
 };
 
@@ -46,8 +48,12 @@ export const onLayoutState = () => {
 
     if (_ls?.pageProps?.pageNumber !== _pageProps?.pageNumber) {
         _pageProps = _ls?.pageProps;
+        const data = {
+            username: _useForm?.getValues("username"),
+            nameFamily: _useForm?.getValues("nameFamily"),
+        };
 
-        fillForm();
+        fillForm(data);
 
         return;
     }
@@ -98,6 +104,11 @@ export const onChangePassword = (item) => {
 
 export const setPage = (page) => {
     _dispatch(setPagePropsAction({ pageNumber: page }));
+};
+
+export const onReset = () => {
+    _useForm.reset();
+    _dispatch(setPagePropsAction({ pageNumber: 1 }));
 };
 
 export const onSubmit = (data) => {
