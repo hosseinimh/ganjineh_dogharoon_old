@@ -1,4 +1,4 @@
-import { BASE_URL } from "../../constants";
+import { BASE_URL, PAGE_ITEMS } from "../../constants";
 import Entity from "./Entity";
 
 export class Village extends Entity {
@@ -6,13 +6,15 @@ export class Village extends Entity {
         super();
     }
 
-    async getPaginate(districtId = 0) {
+    async getPaginate(districtId = 0, _pn = 1, _pi = PAGE_ITEMS) {
         return await this.handlePost(`${BASE_URL}/u/villages`, {
             district_id: districtId,
+            _pn,
+            _pi,
         });
     }
 
-    async getVillage(id) {
+    async get(id) {
         return await this.handlePost(`${BASE_URL}/u/villages/show/${id}`);
     }
 

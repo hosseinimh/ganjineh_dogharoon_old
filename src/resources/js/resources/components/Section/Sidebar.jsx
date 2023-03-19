@@ -355,6 +355,11 @@ function Sidebar() {
                                     strings.relationships,
                                     "Relationships"
                                 )}
+                                {renderSubMenuItem(
+                                    `${BASE_PATH}/countries`,
+                                    strings.countries,
+                                    "Countries"
+                                )}
                             </ul>
                         </li>
                         <li>

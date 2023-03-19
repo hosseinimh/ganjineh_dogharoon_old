@@ -42,6 +42,14 @@ function AuthRoute() {
                                 element={<Pages.EditRelationship />}
                             />
                             <Route
+                                path={`${BASE_PATH}/countries/add`}
+                                element={<Pages.AddCountry />}
+                            />
+                            <Route
+                                path={`${BASE_PATH}/countries/edit/:countryId`}
+                                element={<Pages.EditCountry />}
+                            />
+                            <Route
                                 path={`${BASE_PATH}/users/change_password/:userId`}
                                 element={<Pages.ChangePasswordUser />}
                             />
@@ -69,6 +77,10 @@ function AuthRoute() {
                     <Route
                         path={`${BASE_PATH}/relationships`}
                         element={<Pages.Relationships />}
+                    />
+                    <Route
+                        path={`${BASE_PATH}/countries`}
+                        element={<Pages.Countries />}
                     />
                     <Route
                         path={`${BASE_PATH}/users/edit`}

@@ -111,7 +111,7 @@ const fetchPageData = async () => {
         return null;
     }
 
-    let result = await _entity.getBank(_bankId);
+    let result = await _entity.get(_bankId);
 
     if (result === null) {
         _dispatch(

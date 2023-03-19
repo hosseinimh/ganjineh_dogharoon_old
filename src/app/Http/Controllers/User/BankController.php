@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Bank\IndexBanksRequest;
 use App\Models\Bank as Model;
 use App\Packages\JsonResponse;
 use App\Services\BankService;
@@ -15,9 +16,9 @@ class BankController extends Controller
         parent::__construct($response);
     }
 
-    public function index(): HttpJsonResponse
+    public function index(IndexBanksRequest $request): HttpJsonResponse
     {
-        return $this->onItems($this->service->getPaginate());
+        return $this->onItems($this->service->getPaginate($request->_pn, $request->_pi), $this->service->count());
     }
 
     public function show(Model $model): HttpJsonResponse

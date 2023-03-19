@@ -12,7 +12,7 @@ export class Relationship extends Entity {
         });
     }
 
-    async getRelationship(id) {
+    async get(id) {
         return await this.handlePost(`${BASE_URL}/u/relationships/show/${id}`);
     }
 

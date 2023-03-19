@@ -83,6 +83,10 @@ export const onEdit = (item) => {
     );
 };
 
+export const setPage = (page) => {
+    _dispatch(setPagePropsAction({ pageNumber: page }));
+};
+
 export const onSubmit = (data) => {
     fillForm(data);
 };
@@ -106,7 +110,7 @@ const fillForm = async (data = null) => {
 };
 
 const fetchPageData = async (data) => {
-    let result = await _entity.getPaginate();
+    let result = await _entity.getPaginate(_ls?.pageProps?.pageNumber ?? 1);
 
     if (result === null) {
         _dispatch(setPagePropsAction({ items: null }));

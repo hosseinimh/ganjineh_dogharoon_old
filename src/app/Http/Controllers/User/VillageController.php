@@ -21,7 +21,7 @@ class VillageController extends Controller
         $districtId = intval($request->district_id);
         $districtId = in_array($districtId, [1, 2]) ? $districtId : null;
 
-        return $this->onItems($this->service->getPaginate($districtId));
+        return $this->onItems($this->service->getPaginate($districtId, $request->_pn, $request->_pi), $this->service->count($districtId));
     }
 
     public function show(Model $model): HttpJsonResponse

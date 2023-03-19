@@ -1,4 +1,4 @@
-import { BASE_URL } from "../../constants";
+import { BASE_URL, PAGE_ITEMS } from "../../constants";
 import utils from "../../utils/Utils";
 import Entity from "./Entity";
 
@@ -7,7 +7,7 @@ export class User extends Entity {
         super();
     }
 
-    async getPaginate(username, name, _pn = 1, _pi = 10) {
+    async getPaginate(username, name, _pn = 1, _pi = PAGE_ITEMS) {
         return await this.handlePost(`${BASE_URL}/a/users`, {
             username: username,
             name: name,
@@ -16,11 +16,11 @@ export class User extends Entity {
         });
     }
 
-    async getUser(id) {
+    async get(id) {
         return await this.handlePost(`${BASE_URL}/a/users/show/${id}`);
     }
 
-    async getUserFromUser() {
+    async getFromUser() {
         return await this.handlePost(`${BASE_URL}/u/users/show`);
     }
 

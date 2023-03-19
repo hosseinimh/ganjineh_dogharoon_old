@@ -14,7 +14,7 @@ class DashboardController extends Controller
         parent::__construct($response);
     }
 
-    public function review(): HttpJsonResponse
+    public function index(): HttpJsonResponse
     {
         return $this->onItems([]);
     }

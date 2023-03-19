@@ -8,7 +8,7 @@ const InputTextColumn = ({
     useForm,
     strings = null,
     icon = null,
-    columnClassName = "",
+    columnClassName = "col-md-3 col-12 pb-4",
     inputStyle = {},
     defaultValue = "",
     showLabel = true,

@@ -80,6 +80,7 @@ export const sidebar = {
     villages: "روستاها",
     banks: "بانک‌ها",
     relationships: "روابط خویشاوندی",
+    countries: "کشورها",
     editProfile: "ویرایش پروفایل",
     changePassword: "تغییر کلمه عبور",
     logout: "خروج",
@@ -242,6 +243,29 @@ export const editRelationshipPage = {
     submitted: "ویرایش رابطه خویشاوندی با موفقیت انجام گردید.",
 };
 
+export const countriesPage = {
+    _title: "کشورها",
+    _subTitle: "فهرست کشورهای تعریف شده",
+    name: "کشور",
+    add: "افزودن مشخصات کشور",
+};
+
+export const addCountryPage = {
+    _title: "افزودن کشور",
+    _subTitle: "مشخصات کشور جدید را وارد نمایید.",
+    name: "کشور",
+    namePlaceholder: "کشور",
+    submitted: "افزودن مشخصات کشور با موفقیت انجام گردید.",
+};
+
+export const editCountryPage = {
+    _title: "ویرایش کشور",
+    _subTitle: "مشخصات کشور تعریف شده را ویرایش نمایید.",
+    name: "کشور",
+    namePlaceholder: "کشور",
+    submitted: "ویرایش مشخصات کشور با موفقیت انجام گردید.",
+};
+
 export const membersPage = {
     _title: "اعضای شرکت",
     _subTitle: "فهرست سهام‌داران شرکت",
@@ -260,4 +284,58 @@ export const membersPage = {
     mobile: "شماره موبایل",
     gender: "جنسیت",
     add: "افزودن عضو",
+};
+
+export const addMemberPage = {
+    _title: "افزودن عضو شرکت",
+    _subTitle: "مشخصات سهام‌دار جدید را وارد نمایید.",
+    name: "نام",
+    namePlaceholder: "نام",
+    family: "نام خانوادگی",
+    familyPlaceholder: "نام خانوادگی",
+    memberNo: "شماره عضویت",
+    cardNo: "شماره کارت",
+    nationalNo: "شماره ملی",
+    identityNo: "شماره شناسنامه",
+    fatherName: "نام پدر",
+    fatherNamePlaceholder: "نام پدر",
+    birthDate: "تاریخ تولد",
+    membershipDate: "تاریخ عضویت",
+    postalCode: "کد پستی",
+    postalCodePlaceholder: "کد پستی",
+    address: "آدرس",
+    addressPlaceholder: "آدرس",
+    tel: "شماره تلفن",
+    telPlaceholder: "شماره تلفن",
+    mobile: "شماره موبایل",
+    mobilePlaceholder: "شماره موبایل",
+    gender: "جنسیت",
+    submitted: "افزودن عضو شرکت با موفقیت انجام گردید.",
+};
+
+export const editMemberPage = {
+    _title: "ویرایش عضو شرکت",
+    _subTitle: "مشخصات سهام‌دار جدید را وارد نمایید.",
+    name: "نام",
+    namePlaceholder: "نام",
+    family: "نام خانوادگی",
+    familyPlaceholder: "نام خانوادگی",
+    memberNo: "شماره عضویت",
+    cardNo: "شماره کارت",
+    nationalNo: "شماره ملی",
+    identityNo: "شماره شناسنامه",
+    fatherName: "نام پدر",
+    fatherNamePlaceholder: "نام پدر",
+    birthDate: "تاریخ تولد",
+    membershipDate: "تاریخ عضویت",
+    postalCode: "کد پستی",
+    postalCodePlaceholder: "کد پستی",
+    address: "آدرس",
+    addressPlaceholder: "آدرس",
+    tel: "شماره تلفن",
+    telPlaceholder: "شماره تلفن",
+    mobile: "شماره موبایل",
+    mobilePlaceholder: "شماره موبایل",
+    gender: "جنسیت",
+    submitted: "ویرایش عضو شرکت با موفقیت انجام گردید.",
 };

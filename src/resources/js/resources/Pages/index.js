@@ -13,6 +13,9 @@ import EditBank from "./Bank/EditBank";
 import Relationships from "./Relationship/Relationships";
 import AddRelationship from "./Relationship/AddRelationship";
 import EditRelationship from "./Relationship/EditRelationship";
+import Countries from "./Country/Countries";
+import AddCountry from "./Country/AddCountry";
+import EditCountry from "./Country/EditCountry";
 
 export {
     Dashboard,
@@ -30,4 +33,7 @@ export {
     Relationships,
     AddRelationship,
     EditRelationship,
+    Countries,
+    AddCountry,
+    EditCountry
 };

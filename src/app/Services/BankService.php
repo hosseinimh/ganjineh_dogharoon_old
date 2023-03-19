@@ -8,13 +8,12 @@ class BankService
 {
     public function get(int $id): mixed
     {
-        return
-            Model::where('id', $id)->first();
+        return Model::where('id', $id)->first();
     }
 
-    public function getPaginate(): mixed
+    public function getPaginate(int $page, int $pageItems): mixed
     {
-        return Model::orderBy('name', 'ASC')->get();
+        return Model::orderBy('name', 'ASC')->skip(($page - 1) * $pageItems)->take($pageItems)->get();
     }
 
     public function store(string $name): mixed
@@ -34,5 +33,10 @@ class BankService
         ];
 
         return $model->update($data);
+    }
+
+    public function count(): int
+    {
+        return Model::count();
     }
 }

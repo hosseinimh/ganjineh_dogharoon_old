@@ -6,12 +6,12 @@ import { BASE_PATH, USER_ROLES, ASSETS_PATH } from "../../../constants";
 import { header as strings, general } from "../../../constants/strings";
 import { fetchLogoutAction } from "../../../state/user/userActions";
 import utils from "../../../utils/Utils";
+import CustomLink from "../Link/CustomLink";
 
 const Header = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const userState = useSelector((state) => state.userReducer);
-    const layoutState = useSelector((state) => state.layoutReducer);
     const authUser = utils.getLSUser();
 
     const userTitle = () => {
@@ -164,13 +164,12 @@ const Header = () => {
                                                 </div>
                                             </div>
                                             <ul className="nav flex-column p-0">
-                                                <li className="nav-item-btn text-center nav-item">
-                                                    <button
-                                                        className="btn-wide btn btn-primary btn-sm"
-                                                        onMouseUp={onEditUser}
+                                                <li className="nav-item-btn nav-item">
+                                                    <CustomLink
+                                                        onClick={onEditUser}
                                                     >
                                                         {strings.editUser}
-                                                    </button>
+                                                    </CustomLink>
                                                 </li>
                                             </ul>
                                         </div>

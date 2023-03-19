@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Administrator\BankController;
+use App\Http\Controllers\Administrator\CountryController;
 use App\Http\Controllers\Administrator\DashboardController;
 use App\Http\Controllers\Administrator\MemberController;
 use App\Http\Controllers\Administrator\MemberRelationController;
@@ -16,7 +17,7 @@ Route::middleware(['cors'])->group(function () {
 
 // 'administrator' type users
 Route::middleware(['auth:sanctum', 'auth.administrator'])->group(function () {
-    Route::post('dashboard/review', [DashboardController::class, 'review']);
+    Route::post('dashboard', [DashboardController::class, 'index']);
 
     Route::post('users', [UserController::class, 'index']);
     Route::post('users/show/{model}', [UserController::class, 'show']);
@@ -32,6 +33,9 @@ Route::middleware(['auth:sanctum', 'auth.administrator'])->group(function () {
 
     Route::post('relationships/store', [RelationshipController::class, 'store']);
     Route::post('relationships/update/{model}', [RelationshipController::class, 'update']);
+
+    Route::post('countries/store', [CountryController::class, 'store']);
+    Route::post('countries/update/{model}', [CountryController::class, 'update']);
 
     Route::post('members/store', [MemberController::class, 'store']);
     Route::post('members/update/{model}', [MemberController::class, 'update']);

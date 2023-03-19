@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Administrator\DashboardController;
 use App\Http\Controllers\User\BankController;
+use App\Http\Controllers\User\CountryController;
 use App\Http\Controllers\User\MemberController;
 use App\Http\Controllers\User\MemberRelationController;
 use App\Http\Controllers\User\RelationshipController;
@@ -17,7 +18,7 @@ Route::middleware(['cors'])->group(function () {
 
 // 'user' type users
 Route::middleware(['auth:sanctum', 'auth.user'])->group(function () {
-    Route::post('dashboard/review', [DashboardController::class, 'review']);
+    Route::post('dashboard', [DashboardController::class, 'index']);
 
     Route::post('users/update', [UserController::class, 'update']);
     Route::post('users/change_password', [UserController::class, 'changePassword']);
@@ -33,6 +34,9 @@ Route::middleware(['auth:sanctum', 'auth.logged'])->group(function () {
 
     Route::post('relationships', [RelationshipController::class, 'index']);
     Route::post('relationships/show/{model}', [RelationshipController::class, 'show']);
+
+    Route::post('countries', [CountryController::class, 'index']);
+    Route::post('countries/show/{model}', [CountryController::class, 'show']);
 
     Route::post('members', [MemberController::class, 'index']);
     Route::post('members/show/{model}', [MemberController::class, 'show']);

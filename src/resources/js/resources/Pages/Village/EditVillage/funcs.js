@@ -112,7 +112,7 @@ const fetchPageData = async () => {
         return null;
     }
 
-    let result = await _entity.getVillage(_villageId);
+    let result = await _entity.get(_villageId);
 
     if (result === null) {
         _dispatch(

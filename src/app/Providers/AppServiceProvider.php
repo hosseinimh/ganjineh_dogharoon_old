@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Constants\Theme;
 use App\Http\Controllers\Administrator\BankController;
+use App\Http\Controllers\Administrator\CountryController;
 use App\Http\Controllers\Administrator\DashboardController;
 use App\Http\Controllers\Administrator\MemberController;
 use App\Http\Controllers\Administrator\MemberRelationController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\Administrator\RelationshipController;
 use App\Http\Controllers\Administrator\UserController;
 use App\Http\Controllers\Administrator\VillageController;
 use App\Http\Controllers\User\BankController as UserBankController;
+use App\Http\Controllers\User\CountryController as UserCountryController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
 use App\Http\Controllers\User\MemberController as UserMemberController;
 use App\Http\Controllers\User\MemberRelationController as UserMemberRelationController;
@@ -18,6 +20,7 @@ use App\Http\Controllers\User\RelationshipController as UserRelationshipControll
 use App\Http\Controllers\User\UserController as UserUserController;
 use App\Http\Controllers\User\VillageController as UserVillageController;
 use App\Http\Resources\Bank\BankResource;
+use App\Http\Resources\Country\CountryResource;
 use App\Http\Resources\Member\MemberResource;
 use App\Http\Resources\MemberRelation\MemberRelationResource;
 use App\Http\Resources\Relationship\RelationshipResource;
@@ -26,6 +29,7 @@ use App\Http\Resources\Village\VillageResource;
 use App\Packages\Helper;
 use App\Packages\JsonResponse;
 use App\Services\BankService;
+use App\Services\CountryService;
 use App\Services\MemberRelationService;
 use App\Services\MemberService;
 use App\Services\RelationshipService;
@@ -107,6 +111,14 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(UserMemberRelationController::class, function ($app) {
             return new UserMemberRelationController(new JsonResponse(MemberRelationResource::class), $app->make(MemberRelationService::class));
+        });
+
+        $this->app->bind(CountryController::class, function ($app) {
+            return new CountryController(new JsonResponse(CountryResource::class), $app->make(CountryService::class));
+        });
+
+        $this->app->bind(UserCountryController::class, function ($app) {
+            return new UserCountryController(new JsonResponse(CountryResource::class), $app->make(CountryService::class));
         });
     }
 }

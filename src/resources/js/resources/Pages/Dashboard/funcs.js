@@ -54,8 +54,8 @@ const fillForm = async (data = null) => {
 const fetchPageData = async (data = null) => {
     let result =
         _lsUser?.role === USER_ROLES.ADMINISTRATOR
-            ? await _entity.getReview()
-            : await _entity.getReviewFromUser();
+            ? await _entity.get()
+            : await _entity.getFromUser();
 
     if (result === null) {
         _dispatch(setPagePropsAction({ usersCount: 0 }));

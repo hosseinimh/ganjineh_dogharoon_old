@@ -9,6 +9,8 @@ import addBankSchema from "./Bank/AddBankSchema";
 import editBankSchema from "./Bank/EditBankSchema";
 import addRelationshipSchema from "./Relationship/AddRelationshipSchema";
 import editRelationshipSchema from "./Relationship/EditRelationshipSchema";
+import addCountrySchema from "./Country/AddCountrySchema";
+import editCountrySchema from "./Country/EditCountrySchema";
 
 export {
     loginUserSchema,
@@ -22,4 +24,6 @@ export {
     editBankSchema,
     addRelationshipSchema,
     editRelationshipSchema,
+    addCountrySchema,
+    editCountrySchema
 };

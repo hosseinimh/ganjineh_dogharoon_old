@@ -431,8 +431,8 @@ a {
   background-color: transparent;
 }
 a:hover {
-  color: #0056b3;
-  text-decoration: underline;
+  color: rgb(8, 25, 125);
+  text-decoration: none;
 }
 a:not([href]):not([tabindex]) {
   color: inherit;
@@ -3203,7 +3203,7 @@ input[type="button"].btn-block {
   margin: 0.125rem 0 0;
   font-size: 0.88rem;
   color: #495057;
-  text-align: left;
+  text-align: right;
   list-style: none;
   background-color: #fff;
   background-clip: padding-box;
@@ -4465,7 +4465,7 @@ input[type="button"].btn-block {
 }
 .card-body {
   flex: 1 1 auto;
-  padding: 1.25rem;
+  padding: 1.25rem 1.25rem 0 1.25rem;
 }
 .card-title {
   margin-bottom: 0.75rem;
@@ -23983,7 +23983,7 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:las
   box-sizing: border-box;
 }
 .fixed-table-toolbar .dropdown-menu {
-  text-align: left;
+  text-align: right;
   max-height: 300px;
   overflow: auto;
 }

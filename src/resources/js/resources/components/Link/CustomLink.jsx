@@ -6,9 +6,7 @@ const CustomLink = ({ onClick, children, className = "" }) => {
             href="#"
             onClick={(e) => {
                 e.preventDefault();
-                {
-                    onClick && onClick();
-                }
+                onClick && onClick();
             }}
             className={className}
         >

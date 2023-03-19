@@ -7,7 +7,7 @@ import {
     districts,
 } from "../../../../constants/strings";
 import * as funcs from "./funcs";
-import { ListPage, TableItems } from "../../../components";
+import { ListPage, TableFooter, TableItems } from "../../../components";
 import utils from "../../../../utils/Utils";
 import { USER_ROLES } from "../../../../constants";
 
@@ -66,11 +66,15 @@ const Villages = () => {
         return <TableItems columnsCount={columnsCount} children={children} />;
     };
 
+    const renderFooter = () => (
+        <TableFooter columnsCount={columnsCount} funcs={funcs} />
+    );
+
     return (
         <ListPage
             page={"Villages"}
             strings={strings}
-            table={{ renderHeader, renderItems }}
+            table={{ renderHeader, renderItems, renderFooter }}
             funcs={funcs}
             hasAdd={lsUser.role === USER_ROLES.ADMINISTRATOR ? true : false}
         ></ListPage>

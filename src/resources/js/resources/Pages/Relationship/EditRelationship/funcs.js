@@ -112,7 +112,7 @@ const fetchPageData = async () => {
         return null;
     }
 
-    let result = await _entity.getRelationship(_relationshipId);
+    let result = await _entity.get(_relationshipId);
 
     if (result === null) {
         _dispatch(
