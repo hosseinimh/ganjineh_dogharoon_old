@@ -16,6 +16,9 @@ import Span from "./Span/Span";
 // Link
 import CustomLink from "./Link/CustomLink";
 
+// Loading
+import TopLoadingBar from "./Loading/TopLoadingBar";
+
 // Alert
 import AlertMessage from "./Alert/AlertMessage";
 import AlertState from "./Alert/AlertState";
@@ -54,6 +57,7 @@ export {
     Card,
     Span,
     CustomLink,
+    TopLoadingBar,
     AlertMessage,
     AlertState,
     Table,

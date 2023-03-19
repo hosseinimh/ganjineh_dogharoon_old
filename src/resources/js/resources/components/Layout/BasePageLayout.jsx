@@ -15,7 +15,7 @@ import {
 } from "../../../state/message/messageActions";
 import { clearLogoutAction } from "../../../state/user/userActions";
 import utils from "../../../utils/Utils";
-import { Footer, Header, Sidebar } from "../../components";
+import { Footer, Header, Sidebar, TopLoadingBar } from "../../components";
 
 const BasePageLayout = ({
     page,
@@ -143,6 +143,7 @@ const BasePageLayout = ({
                 userState.isAuthenticated ? " fixed-header fixed-sidebar" : ""
             }`}
         >
+            <TopLoadingBar />
             {userState.isAuthenticated && <Header />}
             {userState.isAuthenticated && (
                 <div className="app-main">

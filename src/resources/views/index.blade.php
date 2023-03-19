@@ -23,10 +23,6 @@
 
 <body>
     <div id="root"></div>
-    <div id="loading" className="loading-wrapper" style="display: flex">
-        <div className="loading"></div>
-        <p>{{ __('general.loading') }}</p>
-    </div>
     @php
     try {
     $filename = 'assets/js/index.js';
@@ -36,11 +32,6 @@
     }
     @endphp
     <script src="{{$THEME::JS_PATH}}/index.js?v={{$fileModified}}"></script>
-    <script type="text/javascript">
-        document.addEventListener("DOMContentLoaded", function(event) {
-            document.getElementById('loading').style.display = 'none';
-        });
-    </script>
 </body>
 
 </html>

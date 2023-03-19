@@ -4,9 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import { InputTextColumn, LoginPageLayout } from "../../../components";
 import * as funcs from "./funcs";
-import {
-    loginUserPage as strings,
-} from "../../../../constants/strings";
+import { loginUserPage as strings } from "../../../../constants/strings";
 import { loginUserSchema as schema } from "../../../validations";
 
 const LoginUser = () => {
@@ -22,23 +20,19 @@ const LoginUser = () => {
             funcs={funcs}
         >
             <form>
-                <div className="form-row">
-                    <div className="col-md-12">
-                        <InputTextColumn
-                            field="username"
-                            showLabel={false}
-                            inputStyle={{ direction: "ltr" }}
-                        />
-                    </div>
-                    <div className="col-md-12">
-                        <InputTextColumn
-                            field="password"
-                            type="password"
-                            showLabel={false}
-                            inputStyle={{ direction: "ltr" }}
-                        />
-                    </div>
-                </div>
+                <InputTextColumn
+                    field="username"
+                    showLabel={false}
+                    inputStyle={{ direction: "ltr" }}
+                    columnClassName="col-12"
+                />
+                <InputTextColumn
+                    field="password"
+                    type="password"
+                    showLabel={false}
+                    inputStyle={{ direction: "ltr" }}
+                    columnClassName="col-12"
+                />
             </form>
         </LoginPageLayout>
     );

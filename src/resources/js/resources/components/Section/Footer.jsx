@@ -37,15 +37,6 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div
-                className="loading-wrapper"
-                style={{
-                    display: ls?.loading ? "flex" : "none",
-                }}
-            >
-                <div className="loading"></div>
-                <p>{general.loading}</p>
-            </div>
         </>
     );
 };
