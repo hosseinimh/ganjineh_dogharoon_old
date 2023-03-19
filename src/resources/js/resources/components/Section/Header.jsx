@@ -106,7 +106,7 @@ const Header = () => {
                                             className="p-0 btn"
                                         >
                                             <img
-                                                width="42"
+                                                width="38"
                                                 className="rounded-circle"
                                                 src={`${ASSETS_PATH}/images/user.png`}
                                                 alt=""
@@ -132,7 +132,7 @@ const Header = () => {
                                                             <div className="widget-content-wrapper">
                                                                 <div className="widget-content-right ml-3">
                                                                     <img
-                                                                        width="42"
+                                                                        width="38"
                                                                         className="rounded-circle"
                                                                         src={`${ASSETS_PATH}/images/user.png`}
                                                                         alt=""

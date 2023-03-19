@@ -6466,6 +6466,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "header": () => (/* binding */ header),
 /* harmony export */   "layout": () => (/* binding */ layout),
 /* harmony export */   "loginUserPage": () => (/* binding */ loginUserPage),
+/* harmony export */   "membersPage": () => (/* binding */ membersPage),
 /* harmony export */   "relationshipsPage": () => (/* binding */ relationshipsPage),
 /* harmony export */   "sidebar": () => (/* binding */ sidebar),
 /* harmony export */   "usersPage": () => (/* binding */ usersPage),
@@ -6694,6 +6695,25 @@ var editRelationshipPage = {
   name: "رابطه خویشاوندی",
   namePlaceholder: "رابطه خویشاوندی",
   submitted: "ویرایش رابطه خویشاوندی با موفقیت انجام گردید."
+};
+var membersPage = {
+  _title: "اعضای شرکت",
+  _subTitle: "فهرست سهام‌داران شرکت",
+  name: "نام",
+  family: "نام خانوادگی",
+  memberNo: "شماره عضویت",
+  cardNo: "شماره کارت",
+  nationalNo: "شماره ملی",
+  identityNo: "شماره شناسنامه",
+  fatherName: "نام پدر",
+  birthDate: "تاریخ تولد",
+  membershipDate: "تاریخ عضویت",
+  postalCode: "کد پستی",
+  address: "آدرس",
+  tel: "شماره تلفن",
+  mobile: "شماره موبایل",
+  gender: "جنسیت",
+  add: "افزودن عضو"
 };
 
 /***/ }),
@@ -9372,7 +9392,7 @@ var onLoad = function onLoad(params) {
     action: null
   };
   _dispatch((0,_state_layout_layoutActions__WEBPACK_IMPORTED_MODULE_3__.setPagePropsAction)(_pageProps));
-  _dispatch((0,_state_layout_layoutActions__WEBPACK_IMPORTED_MODULE_3__.setPageIconAction)("pe-7s-add-user"));
+  _dispatch((0,_state_layout_layoutActions__WEBPACK_IMPORTED_MODULE_3__.setPageIconAction)("pe-7s-id"));
   _dispatch((0,_state_layout_layoutActions__WEBPACK_IMPORTED_MODULE_3__.setPageTitleAction)(_constants_strings__WEBPACK_IMPORTED_MODULE_2__.addUserPage._title, _constants_strings__WEBPACK_IMPORTED_MODULE_2__.addUserPage._subTitle));
 };
 var onLayoutState = function onLayoutState() {};
@@ -9789,7 +9809,7 @@ var onLoad = function onLoad(params) {
   };
   setUserId(params === null || params === void 0 ? void 0 : params.userId);
   _dispatch((0,_state_layout_layoutActions__WEBPACK_IMPORTED_MODULE_2__.setPagePropsAction)(_pageProps));
-  _dispatch((0,_state_layout_layoutActions__WEBPACK_IMPORTED_MODULE_2__.setPageIconAction)("pe-7s-user"));
+  _dispatch((0,_state_layout_layoutActions__WEBPACK_IMPORTED_MODULE_2__.setPageIconAction)("pe-7s-id"));
   _dispatch((0,_state_layout_layoutActions__WEBPACK_IMPORTED_MODULE_2__.setPageTitleAction)(_constants_strings__WEBPACK_IMPORTED_MODULE_1__.editUserPage._title, _constants_strings__WEBPACK_IMPORTED_MODULE_1__.editUserPage._subTitle));
   fillForm();
 };
@@ -13011,7 +13031,7 @@ var Header = function Header() {
                     "aria-expanded": "false",
                     className: "p-0 btn",
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
-                      width: "42",
+                      width: "38",
                       className: "rounded-circle",
                       src: "".concat(_constants__WEBPACK_IMPORTED_MODULE_2__.ASSETS_PATH, "/images/user.png"),
                       alt: ""
@@ -13041,7 +13061,7 @@ var Header = function Header() {
                               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
                                 className: "widget-content-right ml-3",
                                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
-                                  width: "42",
+                                  width: "38",
                                   className: "rounded-circle",
                                   src: "".concat(_constants__WEBPACK_IMPORTED_MODULE_2__.ASSETS_PATH, "/images/user.png"),
                                   alt: ""

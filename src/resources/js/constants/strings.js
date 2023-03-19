@@ -241,3 +241,23 @@ export const editRelationshipPage = {
     namePlaceholder: "رابطه خویشاوندی",
     submitted: "ویرایش رابطه خویشاوندی با موفقیت انجام گردید.",
 };
+
+export const membersPage = {
+    _title: "اعضای شرکت",
+    _subTitle: "فهرست سهام‌داران شرکت",
+    name: "نام",
+    family: "نام خانوادگی",
+    memberNo: "شماره عضویت",
+    cardNo: "شماره کارت",
+    nationalNo: "شماره ملی",
+    identityNo: "شماره شناسنامه",
+    fatherName: "نام پدر",
+    birthDate: "تاریخ تولد",
+    membershipDate: "تاریخ عضویت",
+    postalCode: "کد پستی",
+    address: "آدرس",
+    tel: "شماره تلفن",
+    mobile: "شماره موبایل",
+    gender: "جنسیت",
+    add: "افزودن عضو",
+};

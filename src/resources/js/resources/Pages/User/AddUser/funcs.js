@@ -40,7 +40,7 @@ export const onLoad = (params) => {
     };
 
     _dispatch(setPagePropsAction(_pageProps));
-    _dispatch(setPageIconAction("pe-7s-add-user"));
+    _dispatch(setPageIconAction("pe-7s-id"));
     _dispatch(setPageTitleAction(strings._title, strings._subTitle));
 };
 

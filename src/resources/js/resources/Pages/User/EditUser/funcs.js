@@ -48,7 +48,7 @@ export const onLoad = (params) => {
     setUserId(params?.userId);
 
     _dispatch(setPagePropsAction(_pageProps));
-    _dispatch(setPageIconAction("pe-7s-user"));
+    _dispatch(setPageIconAction("pe-7s-id"));
     _dispatch(setPageTitleAction(strings._title, strings._subTitle));
 
     fillForm();
