@@ -6,7 +6,7 @@ import { slideUp, slideDown } from "es6-slide-up-down";
 import { easeOutQuint } from "es6-easings";
 
 import { BASE_PATH } from "../../../constants";
-import { sidebar as strings } from "../../../constants/strings";
+import { general, sidebar as strings } from "../../../constants/strings";
 import { fetchLogoutAction } from "../../../state/user/userActions";
 import { CustomLink } from "../";
 
@@ -18,131 +18,14 @@ function Sidebar() {
         const container = document.querySelector(".scrollbar-sidebar");
         new PerfectScrollbar(container);
         initSidebarMenus();
-        onPageLoad();
+        onPageChanged();
+        document.addEventListener("DOMContentLoaded", () => {
+            onPageChanged();
+        });
+        window.addEventListener("resize", () => {
+            onPageChanged();
+        });
     }, []);
-
-    const findSidebarBtn = (e, isMobile) => {
-        e.preventDefault();
-
-        let element;
-
-        if (isMobile) {
-            if (e.target.classList.contains("mobile-toggle-nav")) {
-                element = e.target;
-            } else if (e.target.classList.contains("hamburger-box")) {
-                element = e.target.parentNode;
-            } else if (e.target.classList.contains("hamburger-inner")) {
-                element = e.target.parentNode.parentNode;
-            }
-        } else {
-            if (e.target.classList.contains("close-sidebar-btn")) {
-                element = e.target;
-            } else if (e.target.classList.contains("hamburger-box")) {
-                element = e.target.parentNode;
-            } else if (e.target.classList.contains("hamburger-inner")) {
-                element = e.target.parentNode.parentNode;
-            }
-        }
-
-        return element;
-    };
-
-    const findDropDownLink = (e, isMobile) => {
-        e.preventDefault();
-
-        let element;
-
-        if (isMobile) {
-            if (
-                e.target.classList.contains("btn-sm mobile-toggle-header-nav")
-            ) {
-                element = e.target;
-            } else if (e.target.classList.contains("btn-icon-wrapper")) {
-                element = e.target.parentNode;
-            } else if (e.target.classList.contains("fa-ellipsis-v")) {
-                element = e.target.parentNode.parentNode;
-            }
-        } else {
-            if (e.target.getAttribute("data-toggle")) {
-                element = e.target;
-            } else if (e.target.classList.contains("rounded-circle")) {
-                element = e.target.parentNode;
-            } else if (e.target.classList.contains("fa-angle-down")) {
-                element = e.target.parentNode;
-            }
-        }
-
-        return element;
-    };
-
-    const toggleSidebar = (element) => {
-        if (!element) {
-            return;
-        }
-
-        const container = document.querySelector(".app-container");
-
-        if (element.classList.contains("is-active")) {
-            element.classList.remove("is-active");
-            if (document.body.clientWidth < 1250) {
-                container.classList.remove("sidebar-mobile-open");
-            } else {
-                container.classList.remove("closed-sidebar");
-            }
-        } else {
-            element.classList.add("is-active");
-            if (document.body.clientWidth < 1250) {
-                container.classList.add("sidebar-mobile-open");
-            } else {
-                container.classList.add("closed-sidebar");
-            }
-        }
-    };
-
-    const toggleDropDown = (element) => {
-        if (!element) {
-            return;
-        }
-
-        if (document.body.clientWidth < 992) {
-            const appHeader = document.querySelector(".app-header__content");
-            const popup = document.querySelector(".dropdown-menu-left");
-            const btnGroup = popup.parentNode;
-            if (appHeader.classList.contains("header-mobile-open")) {
-                appHeader.classList.remove("header-mobile-open");
-                btnGroup.classList.remove("show");
-                element.classList.remove("active");
-                popup.classList.remove("show");
-                popup.removeAttribute("x-placement");
-                popup.style = "";
-            } else {
-                appHeader.classList.add("header-mobile-open");
-                btnGroup.classList.add("show");
-                element.classList.add("active");
-                popup.classList.add("show");
-                popup.setAttribute("x-placement", "bottom-start");
-                popup.style =
-                    "position: absolute; transform: translate3d(-16px, 44px, 0px); top: 0px; left: 0px; will-change: transform;";
-            }
-        } else {
-            const btnGroup = element.parentNode;
-            const popup = element.nextElementSibling;
-            if (btnGroup.classList.contains("show")) {
-                btnGroup.classList.remove("show");
-                element.setAttribute("aria-expanded", "false");
-                popup.classList.remove("show");
-                popup.removeAttribute("x-placement");
-                popup.style = "";
-            } else {
-                btnGroup.classList.add("show");
-                element.setAttribute("aria-expanded", "true");
-                popup.classList.add("show");
-                popup.setAttribute("x-placement", "bottom-start");
-                popup.style =
-                    "position: absolute; transform: translate3d(0px, 44px, 0px); top: 0px; left: 0px; will-change: transform;";
-            }
-        }
-    };
 
     const initSidebarMenus = () => {
         const links = [...document.querySelectorAll(".menu-container")];
@@ -152,13 +35,18 @@ function Sidebar() {
                 e.preventDefault();
                 const parent = link.parentNode;
                 closeOtherMenus(links, link);
-                parent.classList.add("mm-active");
-                link.setAttribute("aria-expanded", "true");
-                link.classList.add("mb-1");
-                slideDown(link.nextElementSibling, {
-                    duration: 400,
-                    easing: easeOutQuint,
-                });
+                if (parent.classList.contains("mm-active")) {
+                    parent.classList.remove("mm-active");
+                    link.setAttribute("aria-expanded", "false");
+                    slideUp(link.nextElementSibling);
+                } else {
+                    parent.classList.add("mm-active");
+                    link.setAttribute("aria-expanded", "true");
+                    slideDown(link.nextElementSibling, {
+                        duration: 400,
+                        easing: easeOutQuint,
+                    });
+                }
             });
         });
     };
@@ -172,32 +60,7 @@ function Sidebar() {
         });
     };
 
-    const onPageLoad = () => {
-        document
-            .querySelector(".close-sidebar-btn")
-            ?.addEventListener("click", (e) => {
-                const isMobile = document.body.clientWidth < 1250;
-                toggleSidebar(findSidebarBtn(e, isMobile));
-            });
-        document
-            .querySelector(".mobile-toggle-nav")
-            ?.addEventListener("click", (e) => {
-                const isMobile = document.body.clientWidth < 1250;
-                toggleSidebar(findSidebarBtn(e, isMobile));
-            });
-        document
-            .querySelector("[data-toggle]")
-            ?.addEventListener("click", (e) => {
-                const isMobile = document.body.clientWidth < 992;
-                toggleDropDown(findDropDownLink(e, isMobile));
-            });
-        document
-            .querySelector(".mobile-toggle-header-nav")
-            ?.addEventListener("click", (e) => {
-                const isMobile = document.body.clientWidth < 992;
-                toggleDropDown(findDropDownLink(e, isMobile));
-            });
-
+    const onPageChanged = () => {
         const container = document.querySelector(".app-container");
 
         if (document.body.clientWidth < 1250) {
@@ -218,7 +81,9 @@ function Sidebar() {
             <Link
                 to={url}
                 aria-expanded="false"
-                className={layoutState?.page === page ? "mm-active" : ""}
+                className={`mb-1 ${
+                    layoutState?.page === page ? "mm-active" : ""
+                }`}
             >
                 <i className={`metismenu-icon ${icon}`}></i>
                 {string}
@@ -231,7 +96,9 @@ function Sidebar() {
             <Link
                 to={url}
                 aria-expanded="false"
-                className={layoutState?.page === page ? "mm-active" : ""}
+                className={`mb-1 ${
+                    layoutState?.page === page ? "mm-active" : ""
+                }`}
             >
                 <i className="metismenu-icon"></i>
                 {string}
@@ -243,7 +110,7 @@ function Sidebar() {
         <div className="app-sidebar sidebar-text-light sidebar-shadow bg-royal">
             <div className="app-header__logo">
                 <div className="logo-src">
-                    <span>Ganjineh Dogharoon</span>
+                    <span>{general.brandLogo}</span>
                 </div>
                 <div className="header__pane ml-auto">
                     <div>
@@ -312,7 +179,7 @@ function Sidebar() {
                             <a
                                 href="#"
                                 aria-expanded="false"
-                                className="menu-container"
+                                className="menu-container mb-1"
                             >
                                 <i className="metismenu-icon pe-7s-news-paper"></i>
                                 {strings.baseInformation}
@@ -363,7 +230,7 @@ function Sidebar() {
                             <a
                                 href="#"
                                 aria-expanded="false"
-                                className="menu-container"
+                                className="menu-container mb-1"
                             >
                                 <i className="metismenu-icon pe-7s-config"></i>
                                 {strings.systemManagement}

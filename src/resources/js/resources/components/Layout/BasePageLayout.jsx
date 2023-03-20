@@ -141,15 +141,17 @@ const BasePageLayout = ({
     const onAppContainerClick = (e) => {
         let clickedOnWidget = false;
         let element = e.target;
-        while (element.parentNode) {
-            if (element.parentNode.classList?.contains("widget-content")) {
-                clickedOnWidget = true;
-                break;
+        if (document.body.clientWidth >= 992) {
+            while (element.parentNode) {
+                if (element.parentNode.classList?.contains("widget-content")) {
+                    clickedOnWidget = true;
+                    break;
+                }
+                element = element.parentNode;
             }
-            element = element.parentNode;
-        }
-        if (!clickedOnWidget) {
-            dispatch(closeDropDownAction(["widget-content"]));
+            if (!clickedOnWidget) {
+                dispatch(closeDropDownAction(["widget-content"]));
+            }
         }
     };
 

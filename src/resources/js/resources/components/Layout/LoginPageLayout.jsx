@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import { AlertState } from "../../components";
-import { footer } from "../../../constants/strings";
+import { footer, general } from "../../../constants/strings";
 import BasePageLayout from "./BasePageLayout";
 
 const LoginPageLayout = ({ children, strings, funcs, useForm }) => {
@@ -20,7 +20,7 @@ const LoginPageLayout = ({ children, strings, funcs, useForm }) => {
                     <div className="d-flex h-100 justify-content-center align-items-center">
                         <div className="mx-auto app-login-box col-md-8">
                             <div className="app-logo-inverse mx-auto mb-3">
-                                <span>Ganjineh Dogharoon</span>
+                                <span>{general.brandLogo}</span>
                             </div>
                             <div className="modal-dialog w-100 mx-auto">
                                 <div className="modal-content">

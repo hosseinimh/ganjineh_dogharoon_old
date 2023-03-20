@@ -1,7 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import { countriesPage as strings, general } from "../../../../constants/strings";
+import {
+    countriesPage as strings,
+    general,
+} from "../../../../constants/strings";
 import * as funcs from "./funcs";
 import { ListPage, TableFooter, TableItems } from "../../../components";
 import utils from "../../../../utils/Utils";
@@ -63,7 +66,7 @@ const Countries = () => {
             strings={strings}
             table={{ renderHeader, renderItems, renderFooter }}
             funcs={funcs}
-            hasAdd={lsUser.role === USER_ROLES.ADMINISTRATOR ? true : false}
+            hasAdd={lsUser?.role === USER_ROLES.ADMINISTRATOR ? true : false}
         ></ListPage>
     );
 };

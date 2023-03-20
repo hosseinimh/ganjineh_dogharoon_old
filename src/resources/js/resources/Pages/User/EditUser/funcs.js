@@ -130,7 +130,7 @@ const fetchPageData = async () => {
     }
 
     let result =
-        _lsUser.role === USER_ROLES.ADMINISTRATOR
+        _lsUser?.role === USER_ROLES.ADMINISTRATOR
             ? await _entity.get(_userId)
             : await _entity.getFromUser();
 

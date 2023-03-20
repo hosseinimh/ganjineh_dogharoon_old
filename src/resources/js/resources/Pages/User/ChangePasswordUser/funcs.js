@@ -53,7 +53,7 @@ export const onSubmit = async (data) => {
     _dispatch(clearMessageAction());
 
     let result =
-        _lsUser.role === USER_ROLES.ADMINISTRATOR
+        _lsUser?.role === USER_ROLES.ADMINISTRATOR
             ? await _entity.changePassword(
                   _userId,
                   data.newPassword,

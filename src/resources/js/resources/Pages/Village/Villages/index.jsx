@@ -76,7 +76,7 @@ const Villages = () => {
             strings={strings}
             table={{ renderHeader, renderItems, renderFooter }}
             funcs={funcs}
-            hasAdd={lsUser.role === USER_ROLES.ADMINISTRATOR ? true : false}
+            hasAdd={lsUser?.role === USER_ROLES.ADMINISTRATOR ? true : false}
         ></ListPage>
     );
 };

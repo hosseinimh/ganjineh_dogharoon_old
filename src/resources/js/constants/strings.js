@@ -2,6 +2,7 @@ export const layout = { brand: "شرکت گنجینه دوغارون" };
 
 export const general = {
     brand: "شرکت گنجینه دوغارون",
+    brandLogo: "Ganjineh Dogharoon",
     add: "افزودن",
     edit: "ویرایش",
     remove: "حذف",

@@ -4,6 +4,10 @@ import { useNavigate } from "react-router-dom";
 
 import { BASE_PATH, USER_ROLES, ASSETS_PATH } from "../../../constants";
 import { header as strings, general } from "../../../constants/strings";
+import {
+    toggleDropDownAction,
+    toggleSidebarAction,
+} from "../../../state/layout/layoutActions";
 import { fetchLogoutAction } from "../../../state/user/userActions";
 import utils from "../../../utils/Utils";
 import CustomLink from "../Link/CustomLink";
@@ -58,15 +62,28 @@ const Header = () => {
         }
     }, [userState]);
 
+    const toggleSidebar = (className) => {
+        const element = document.querySelector(`.${className}`);
+        dispatch(toggleSidebarAction(element));
+    };
+
+    const toggleDropDown = (className) => {
+        const element = document.querySelector(`.${className}`);
+        dispatch(toggleDropDownAction(element));
+    };
+
     return (
         <div className="app-header header-shadow">
             <div className="app-header__logo">
-                <div className="logo-src"><span>Ganjineh Dogharoon</span></div>
+                <div className="logo-src">
+                    <span>{general.brandLogo}</span>
+                </div>
                 <div className="header__pane mr-auto">
                     <div>
                         <button
                             type="button"
-                            className="hamburger close-sidebar-btn hamburger--elastic"
+                            className="hamburger close-sidebar-btn hamburger--elastic pc-close-sidebar"
+                            onClick={() => toggleSidebar("pc-close-sidebar")}
                         >
                             <span className="hamburger-box">
                                 <span className="hamburger-inner"></span>
@@ -79,7 +96,8 @@ const Header = () => {
                 <div>
                     <button
                         type="button"
-                        className="hamburger hamburger--elastic mobile-toggle-nav"
+                        className="hamburger hamburger--elastic mobile-toggle-nav mobile-close-sidebar"
+                        onClick={() => toggleSidebar("mobile-close-sidebar")}
                     >
                         <span className="hamburger-box">
                             <span className="hamburger-inner"></span>
@@ -91,14 +109,15 @@ const Header = () => {
                 <span>
                     <button
                         type="button"
-                        className="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav"
+                        className="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav mobile-dropdown"
+                        onClick={() => toggleDropDown("mobile-dropdown")}
                     >
                         <span className="btn-icon-wrapper">
                             <i className="fa fa-ellipsis-v fa-w-6"></i>
                         </span>
                     </button>
                 </span>
-            </div>{" "}
+            </div>
             <div className="app-header__content">
                 <div className="app-header-left">
                     <div className="header-btn-lg">
@@ -118,7 +137,10 @@ const Header = () => {
                                             data-toggle="dropdown"
                                             aria-haspopup="true"
                                             aria-expanded="false"
-                                            className="p-0 btn"
+                                            className="p-0 btn pc-dropdown"
+                                            onClick={() =>
+                                                toggleDropDown("pc-dropdown")
+                                            }
                                         >
                                             <img
                                                 width="38"
@@ -132,7 +154,7 @@ const Header = () => {
                                             tabIndex={"-1"}
                                             role="menu"
                                             aria-hidden="true"
-                                            className="rm-pointers dropdown-menu-lg dropdown-menu dropdown-menu-left"
+                                            className="rm-pointers dropdown-menu-lg dropdown-menu dropdown-menu-left user-popup"
                                         >
                                             <div className="dropdown-menu-header">
                                                 <div className="dropdown-menu-header-inner bg-info">

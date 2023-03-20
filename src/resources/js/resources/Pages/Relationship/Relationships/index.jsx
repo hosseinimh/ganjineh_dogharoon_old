@@ -62,7 +62,7 @@ const Relationships = () => {
             strings={strings}
             table={{ renderHeader, renderItems }}
             funcs={funcs}
-            hasAdd={lsUser.role === USER_ROLES.ADMINISTRATOR ? true : false}
+            hasAdd={lsUser?.role === USER_ROLES.ADMINISTRATOR ? true : false}
         ></ListPage>
     );
 };
