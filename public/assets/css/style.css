@@ -4,6 +4,11 @@
   src: url(../fonts/Vazir.eot);
   src: url(../fonts/Vazir.woff) format("woff"), url(../fonts/Vazir.ttf) format("truetype");
 }
+@font-face {
+  font-family: "Crimson Text";
+  src: url(../fonts/CrimsonText-SemiBoldItalic.ttf) format("truetype");
+  font-display: swap;
+}
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);
@@ -8940,9 +8945,15 @@ button,
 .app-header__logo .logo-src {
   height: 40px;
   width: 200px;
-  background: url(../images/logo.png);
-  background-size: cover;
-  margin-top: -8px;
+  margin-top: -5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.app-header__logo .logo-src span {
+  font-family: "Crimson Text", noto color emoji;
+  color: #000;
+  font-size: 1.3rem;
 }
 .app-header__menu,
 .app-header__mobile-menu {
@@ -15220,8 +15231,14 @@ legend {
 .app-logo-inverse {
   height: 40px;
   width: 200px;
-  background: url(../images/logo-inverse.png);
-  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.app-logo-inverse span {
+  font-family: "Crimson Text", noto color emoji;
+  color: #fff;
+  font-size: 1.3rem;
 }
 .app-login-box .app-logo {
   margin-bottom: 3rem;

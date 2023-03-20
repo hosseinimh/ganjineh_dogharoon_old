@@ -10893,6 +10893,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_hook_form__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-hook-form */ "./node_modules/react-hook-form/dist/index.esm.mjs");
 /* harmony import */ var _hookform_resolvers_yup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @hookform/resolvers/yup */ "./node_modules/@hookform/resolvers/yup/dist/yup.mjs");
@@ -10913,8 +10914,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var EditUser = function EditUser() {
-  var _layoutState$pageProp, _layoutState$pageProp2;
+  var _layoutState$pageProp;
   var lsUser = _utils_Utils__WEBPACK_IMPORTED_MODULE_7__["default"].getLSUser();
   var layoutState = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.layoutReducer;
@@ -10922,8 +10924,10 @@ var EditUser = function EditUser() {
   var form = (0,react_hook_form__WEBPACK_IMPORTED_MODULE_9__.useForm)({
     resolver: (0,_hookform_resolvers_yup__WEBPACK_IMPORTED_MODULE_2__.yupResolver)(_validations__WEBPACK_IMPORTED_MODULE_6__.editUserSchema)
   });
+  var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_10__.useParams)(),
+    userId = _useParams.userId;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_components__WEBPACK_IMPORTED_MODULE_3__.FormPage, {
-    page: !(layoutState !== null && layoutState !== void 0 && (_layoutState$pageProp = layoutState.pageProps) !== null && _layoutState$pageProp !== void 0 && _layoutState$pageProp.userId) ? null : (layoutState === null || layoutState === void 0 ? void 0 : (_layoutState$pageProp2 = layoutState.pageProps) === null || _layoutState$pageProp2 === void 0 ? void 0 : _layoutState$pageProp2.userId) == (lsUser === null || lsUser === void 0 ? void 0 : lsUser.id) ? "EditProfile" : "Users",
+    page: !userId || (layoutState === null || layoutState === void 0 ? void 0 : (_layoutState$pageProp = layoutState.pageProps) === null || _layoutState$pageProp === void 0 ? void 0 : _layoutState$pageProp.userId) === (lsUser === null || lsUser === void 0 ? void 0 : lsUser.id) ? "EditProfile" : "Users",
     strings: _constants_strings__WEBPACK_IMPORTED_MODULE_5__.editUserPage,
     funcs: _funcs__WEBPACK_IMPORTED_MODULE_4__,
     useForm: form,
@@ -13534,7 +13538,10 @@ var LoginPageLayout = function LoginPageLayout(_ref) {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
             className: "mx-auto app-login-box col-md-8",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-              className: "app-logo-inverse mx-auto mb-3"
+              className: "app-logo-inverse mx-auto mb-3",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                children: "Ganjineh Dogharoon"
+              })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
               className: "modal-dialog w-100 mx-auto",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
@@ -13555,6 +13562,7 @@ var LoginPageLayout = function LoginPageLayout(_ref) {
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
                   className: "modal-footer clearfix justify-content-end",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                    className: "mx-3",
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
                       className: "btn btn-primary btn-lg",
                       onClick: useForm.handleSubmit(funcs.onSubmit),
@@ -14158,7 +14166,7 @@ var Header = function Header() {
     dispatch((0,_state_user_userActions__WEBPACK_IMPORTED_MODULE_4__.fetchLogoutAction)());
   };
   var onEditUser = function onEditUser() {
-    navigate("".concat(_constants__WEBPACK_IMPORTED_MODULE_2__.BASE_PATH, "/users/edit/").concat(authUser === null || authUser === void 0 ? void 0 : authUser.id));
+    navigate("".concat(_constants__WEBPACK_IMPORTED_MODULE_2__.BASE_PATH, "/users/edit"));
   };
   var onChanePassword = function onChanePassword() {
     navigate("".concat(_constants__WEBPACK_IMPORTED_MODULE_2__.BASE_PATH, "/users/change_password"));
@@ -14186,7 +14194,10 @@ var Header = function Header() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
       className: "app-header__logo",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-        className: "logo-src"
+        className: "logo-src",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
+          children: "Ganjineh Dogharoon"
+        })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
         className: "header__pane mr-auto",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
@@ -14449,14 +14460,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
@@ -14474,18 +14481,6 @@ function Sidebar() {
   var layoutState = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.layoutReducer;
   });
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
-    _useState2 = _slicedToArray(_useState, 2),
-    page = _useState2[0],
-    setPage = _useState2[1];
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    setPage(layoutState === null || layoutState === void 0 ? void 0 : layoutState.page);
-  }, [layoutState]);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    if (page) {
-      selectPage();
-    }
-  }, [page]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var container = document.querySelector(".scrollbar-sidebar");
     new perfect_scrollbar__WEBPACK_IMPORTED_MODULE_2__["default"](container);
@@ -14604,36 +14599,26 @@ function Sidebar() {
       link.addEventListener("click", function (e) {
         e.preventDefault();
         var parent = link.parentNode;
-        if (parent.classList.contains("mm-active")) {
-          parent.classList.remove("mm-active");
-          link.setAttribute("aria-expanded", "false");
-          link.classList.remove("mb-1");
-          (0,es6_slide_up_down__WEBPACK_IMPORTED_MODULE_3__.slideUp)(link.nextElementSibling);
-        } else {
-          parent.classList.add("mm-active");
-          link.setAttribute("aria-expanded", "true");
-          link.classList.add("mb-1");
-          (0,es6_slide_up_down__WEBPACK_IMPORTED_MODULE_3__.slideDown)(link.nextElementSibling, {
-            duration: 400,
-            easing: es6_easings__WEBPACK_IMPORTED_MODULE_4__.easeOutQuint
-          });
-        }
+        closeOtherMenus(links, link);
+        parent.classList.add("mm-active");
+        link.setAttribute("aria-expanded", "true");
+        link.classList.add("mb-1");
+        (0,es6_slide_up_down__WEBPACK_IMPORTED_MODULE_3__.slideDown)(link.nextElementSibling, {
+          duration: 400,
+          easing: es6_easings__WEBPACK_IMPORTED_MODULE_4__.easeOutQuint
+        });
       });
     });
   };
-  var selectPage = function selectPage() {
-    var links = _toConsumableArray(document.querySelectorAll("[datapage"));
-    var link = links.filter(function (l) {
-      return l.getAttribute("datapage") === page;
+  var closeOtherMenus = function closeOtherMenus(links, exceptLink) {
+    var otherLinks = links.filter(function (l) {
+      return l !== exceptLink;
     });
-    link = link.length > 0 ? link[0] : null;
-    link.firstChild.classList.add("mm-active");
-    if (link.parentNode.classList.contains("mm-collapse")) {
-      link.parentNode.style = "display:block;";
-    }
-    if (link.parentNode.parentNode.nodeName === "LI") {
-      link.parentNode.parentNode.classList.add("mm-active");
-    }
+    otherLinks.forEach(function (link) {
+      link.parentNode.classList.remove("mm-active");
+      link.setAttribute("aria-expanded", "false");
+      (0,es6_slide_up_down__WEBPACK_IMPORTED_MODULE_3__.slideUp)(link.nextElementSibling);
+    });
   };
   var onPageLoad = function onPageLoad() {
     var _document$querySelect, _document$querySelect2, _document$querySelect3, _document$querySelect4;
@@ -14667,10 +14652,10 @@ function Sidebar() {
   };
   var renderMenuItem = function renderMenuItem(url, string, icon, page) {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("li", {
-      datapage: page,
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Link, {
         to: url,
         "aria-expanded": "false",
+        className: (layoutState === null || layoutState === void 0 ? void 0 : layoutState.page) === page ? "mm-active" : "",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("i", {
           className: "metismenu-icon ".concat(icon)
         }), string]
@@ -14679,10 +14664,10 @@ function Sidebar() {
   };
   var renderSubMenuItem = function renderSubMenuItem(url, string, page) {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("li", {
-      datapage: page,
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Link, {
         to: url,
         "aria-expanded": "false",
+        className: (layoutState === null || layoutState === void 0 ? void 0 : layoutState.page) === page ? "mm-active" : "",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("i", {
           className: "metismenu-icon"
         }), string]
@@ -14694,7 +14679,10 @@ function Sidebar() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
       className: "app-header__logo",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
-        className: "logo-src"
+        className: "logo-src",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
+          children: "Ganjineh Dogharoon"
+        })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
         className: "header__pane ml-auto",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
@@ -14751,6 +14739,7 @@ function Sidebar() {
             className: "app-sidebar__heading",
             children: _constants_strings__WEBPACK_IMPORTED_MODULE_6__.sidebar.servicesContainer
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("li", {
+            className: "".concat(["Villages", "Banks", "Relationships", "Countries"].includes(layoutState === null || layoutState === void 0 ? void 0 : layoutState.page) ? "mm-active" : ""),
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("a", {
               href: "#",
               "aria-expanded": "false",
@@ -14762,9 +14751,13 @@ function Sidebar() {
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("ul", {
               className: "mm-collapse",
+              style: ["Villages", "Banks", "Relationships", "Countries"].includes(layoutState === null || layoutState === void 0 ? void 0 : layoutState.page) ? {
+                display: "block"
+              } : {},
               children: [renderSubMenuItem("".concat(_constants__WEBPACK_IMPORTED_MODULE_5__.BASE_PATH, "/villages"), _constants_strings__WEBPACK_IMPORTED_MODULE_6__.sidebar.villages, "Villages"), renderSubMenuItem("".concat(_constants__WEBPACK_IMPORTED_MODULE_5__.BASE_PATH, "/banks"), _constants_strings__WEBPACK_IMPORTED_MODULE_6__.sidebar.banks, "Banks"), renderSubMenuItem("".concat(_constants__WEBPACK_IMPORTED_MODULE_5__.BASE_PATH, "/relationships"), _constants_strings__WEBPACK_IMPORTED_MODULE_6__.sidebar.relationships, "Relationships"), renderSubMenuItem("".concat(_constants__WEBPACK_IMPORTED_MODULE_5__.BASE_PATH, "/countries"), _constants_strings__WEBPACK_IMPORTED_MODULE_6__.sidebar.countries, "Countries")]
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("li", {
+            className: "".concat(["Users"].includes(layoutState === null || layoutState === void 0 ? void 0 : layoutState.page) ? "mm-active" : ""),
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("a", {
               href: "#",
               "aria-expanded": "false",
@@ -14776,6 +14769,9 @@ function Sidebar() {
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("ul", {
               className: "mm-collapse",
+              style: ["Users"].includes(layoutState === null || layoutState === void 0 ? void 0 : layoutState.page) ? {
+                display: "block"
+              } : {},
               children: renderSubMenuItem("".concat(_constants__WEBPACK_IMPORTED_MODULE_5__.BASE_PATH, "/users"), _constants_strings__WEBPACK_IMPORTED_MODULE_6__.sidebar.users, "Users")
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("li", {

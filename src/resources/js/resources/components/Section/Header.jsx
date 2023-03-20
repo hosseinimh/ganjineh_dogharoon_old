@@ -31,7 +31,7 @@ const Header = () => {
     };
 
     const onEditUser = () => {
-        navigate(`${BASE_PATH}/users/edit/${authUser?.id}`);
+        navigate(`${BASE_PATH}/users/edit`);
     };
 
     const onChanePassword = () => {
@@ -61,7 +61,7 @@ const Header = () => {
     return (
         <div className="app-header header-shadow">
             <div className="app-header__logo">
-                <div className="logo-src"></div>
+                <div className="logo-src"><span>Ganjineh Dogharoon</span></div>
                 <div className="header__pane mr-auto">
                     <div>
                         <button

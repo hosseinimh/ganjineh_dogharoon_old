@@ -19,7 +19,9 @@ const LoginPageLayout = ({ children, strings, funcs, useForm }) => {
                 <div className="h-100 bg-plum-plate bg-animation">
                     <div className="d-flex h-100 justify-content-center align-items-center">
                         <div className="mx-auto app-login-box col-md-8">
-                            <div className="app-logo-inverse mx-auto mb-3"></div>
+                            <div className="app-logo-inverse mx-auto mb-3">
+                                <span>Ganjineh Dogharoon</span>
+                            </div>
                             <div className="modal-dialog w-100 mx-auto">
                                 <div className="modal-content">
                                     <div className="modal-body">
@@ -35,7 +37,7 @@ const LoginPageLayout = ({ children, strings, funcs, useForm }) => {
                                         {children}
                                     </div>
                                     <div className="modal-footer clearfix justify-content-end">
-                                        <div>
+                                        <div className="mx-3">
                                             <button
                                                 className="btn btn-primary btn-lg"
                                                 onClick={useForm.handleSubmit(

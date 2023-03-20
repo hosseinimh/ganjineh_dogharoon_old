@@ -1,4 +1,5 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -20,13 +21,12 @@ const EditUser = () => {
     const form = useForm({
         resolver: yupResolver(schema),
     });
+    const { userId } = useParams();
 
     return (
         <FormPage
             page={
-                !layoutState?.pageProps?.userId
-                    ? null
-                    : layoutState?.pageProps?.userId == lsUser?.id
+                !userId || layoutState?.pageProps?.userId === lsUser?.id
                     ? "EditProfile"
                     : "Users"
             }

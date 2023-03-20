@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import PerfectScrollbar from "perfect-scrollbar";
@@ -13,17 +13,6 @@ import { CustomLink } from "../";
 function Sidebar() {
     const dispatch = useDispatch();
     const layoutState = useSelector((state) => state.layoutReducer);
-    const [page, setPage] = useState(null);
-
-    useEffect(() => {
-        setPage(layoutState?.page);
-    }, [layoutState]);
-
-    useEffect(() => {
-        if (page) {
-            selectPage();
-        }
-    }, [page]);
 
     useEffect(() => {
         const container = document.querySelector(".scrollbar-sidebar");
@@ -162,35 +151,25 @@ function Sidebar() {
             link.addEventListener("click", (e) => {
                 e.preventDefault();
                 const parent = link.parentNode;
-                if (parent.classList.contains("mm-active")) {
-                    parent.classList.remove("mm-active");
-                    link.setAttribute("aria-expanded", "false");
-                    link.classList.remove("mb-1");
-                    slideUp(link.nextElementSibling);
-                } else {
-                    parent.classList.add("mm-active");
-                    link.setAttribute("aria-expanded", "true");
-                    link.classList.add("mb-1");
-                    slideDown(link.nextElementSibling, {
-                        duration: 400,
-                        easing: easeOutQuint,
-                    });
-                }
+                closeOtherMenus(links, link);
+                parent.classList.add("mm-active");
+                link.setAttribute("aria-expanded", "true");
+                link.classList.add("mb-1");
+                slideDown(link.nextElementSibling, {
+                    duration: 400,
+                    easing: easeOutQuint,
+                });
             });
         });
     };
 
-    const selectPage = () => {
-        const links = [...document.querySelectorAll("[datapage")];
-        let link = links.filter((l) => l.getAttribute("datapage") === page);
-        link = link.length > 0 ? link[0] : null;
-        link.firstChild.classList.add("mm-active");
-        if (link.parentNode.classList.contains("mm-collapse")) {
-            link.parentNode.style = "display:block;";
-        }
-        if (link.parentNode.parentNode.nodeName === "LI") {
-            link.parentNode.parentNode.classList.add("mm-active");
-        }
+    const closeOtherMenus = (links, exceptLink) => {
+        const otherLinks = links.filter((l) => l !== exceptLink);
+        otherLinks.forEach((link) => {
+            link.parentNode.classList.remove("mm-active");
+            link.setAttribute("aria-expanded", "false");
+            slideUp(link.nextElementSibling);
+        });
     };
 
     const onPageLoad = () => {
@@ -235,8 +214,12 @@ function Sidebar() {
     };
 
     const renderMenuItem = (url, string, icon, page) => (
-        <li datapage={page}>
-            <Link to={url} aria-expanded="false">
+        <li>
+            <Link
+                to={url}
+                aria-expanded="false"
+                className={layoutState?.page === page ? "mm-active" : ""}
+            >
                 <i className={`metismenu-icon ${icon}`}></i>
                 {string}
             </Link>
@@ -244,8 +227,12 @@ function Sidebar() {
     );
 
     const renderSubMenuItem = (url, string, page) => (
-        <li datapage={page}>
-            <Link to={url} aria-expanded="false">
+        <li>
+            <Link
+                to={url}
+                aria-expanded="false"
+                className={layoutState?.page === page ? "mm-active" : ""}
+            >
                 <i className="metismenu-icon"></i>
                 {string}
             </Link>
@@ -255,7 +242,9 @@ function Sidebar() {
     return (
         <div className="app-sidebar sidebar-text-light sidebar-shadow bg-royal">
             <div className="app-header__logo">
-                <div className="logo-src"></div>
+                <div className="logo-src">
+                    <span>Ganjineh Dogharoon</span>
+                </div>
                 <div className="header__pane ml-auto">
                     <div>
                         <button
@@ -308,7 +297,18 @@ function Sidebar() {
                         <li className="app-sidebar__heading">
                             {strings.servicesContainer}
                         </li>
-                        <li>
+                        <li
+                            className={`${
+                                [
+                                    "Villages",
+                                    "Banks",
+                                    "Relationships",
+                                    "Countries",
+                                ].includes(layoutState?.page)
+                                    ? "mm-active"
+                                    : ""
+                            }`}
+                        >
                             <a
                                 href="#"
                                 aria-expanded="false"
@@ -318,7 +318,19 @@ function Sidebar() {
                                 {strings.baseInformation}
                                 <i className="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                             </a>
-                            <ul className="mm-collapse">
+                            <ul
+                                className="mm-collapse"
+                                style={
+                                    [
+                                        "Villages",
+                                        "Banks",
+                                        "Relationships",
+                                        "Countries",
+                                    ].includes(layoutState?.page)
+                                        ? { display: "block" }
+                                        : {}
+                                }
+                            >
                                 {renderSubMenuItem(
                                     `${BASE_PATH}/villages`,
                                     strings.villages,
@@ -341,7 +353,13 @@ function Sidebar() {
                                 )}
                             </ul>
                         </li>
-                        <li>
+                        <li
+                            className={`${
+                                ["Users"].includes(layoutState?.page)
+                                    ? "mm-active"
+                                    : ""
+                            }`}
+                        >
                             <a
                                 href="#"
                                 aria-expanded="false"
@@ -351,7 +369,14 @@ function Sidebar() {
                                 {strings.systemManagement}
                                 <i className="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                             </a>
-                            <ul className="mm-collapse">
+                            <ul
+                                className="mm-collapse"
+                                style={
+                                    ["Users"].includes(layoutState?.page)
+                                        ? { display: "block" }
+                                        : {}
+                                }
+                            >
                                 {renderSubMenuItem(
                                     `${BASE_PATH}/users`,
                                     strings.users,
